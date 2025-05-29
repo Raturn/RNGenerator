@@ -38,16 +38,16 @@ namespace RNGenerator
             aboutToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
-            textBox91 = new TextBox();
-            textBox92 = new TextBox();
-            textBox93 = new TextBox();
-            textBox94 = new TextBox();
-            textBox95 = new TextBox();
-            textBox96 = new TextBox();
-            textBox97 = new TextBox();
-            textBox98 = new TextBox();
-            textBox99 = new TextBox();
-            textBox100 = new TextBox();
+            val01 = new TextBox();
+            val02 = new TextBox();
+            val03 = new TextBox();
+            val04 = new TextBox();
+            val05 = new TextBox();
+            val06 = new TextBox();
+            val07 = new TextBox();
+            val08 = new TextBox();
+            val09 = new TextBox();
+            val00 = new TextBox();
             val11 = new TextBox();
             val12 = new TextBox();
             val13 = new TextBox();
@@ -58,56 +58,56 @@ namespace RNGenerator
             val18 = new TextBox();
             val19 = new TextBox();
             val10 = new TextBox();
-            textBox80 = new TextBox();
-            textBox81 = new TextBox();
-            textBox82 = new TextBox();
-            textBox83 = new TextBox();
-            textBox84 = new TextBox();
-            textBox85 = new TextBox();
-            textBox86 = new TextBox();
-            textBox87 = new TextBox();
-            textBox88 = new TextBox();
-            textBox89 = new TextBox();
-            textBox70 = new TextBox();
-            textBox71 = new TextBox();
-            textBox72 = new TextBox();
-            textBox73 = new TextBox();
-            textBox74 = new TextBox();
-            textBox75 = new TextBox();
-            textBox76 = new TextBox();
-            textBox77 = new TextBox();
-            textBox78 = new TextBox();
-            textBox79 = new TextBox();
-            textBox60 = new TextBox();
-            textBox61 = new TextBox();
-            textBox62 = new TextBox();
-            textBox63 = new TextBox();
-            textBox64 = new TextBox();
-            textBox65 = new TextBox();
-            textBox66 = new TextBox();
-            textBox67 = new TextBox();
-            textBox68 = new TextBox();
-            textBox69 = new TextBox();
-            textBox50 = new TextBox();
-            textBox51 = new TextBox();
-            textBox52 = new TextBox();
-            textBox53 = new TextBox();
-            textBox54 = new TextBox();
-            textBox55 = new TextBox();
-            textBox56 = new TextBox();
-            textBox57 = new TextBox();
-            textBox58 = new TextBox();
-            textBox59 = new TextBox();
-            textBox40 = new TextBox();
-            textBox41 = new TextBox();
-            textBox42 = new TextBox();
-            textBox43 = new TextBox();
-            textBox44 = new TextBox();
-            textBox45 = new TextBox();
-            textBox46 = new TextBox();
-            textBox47 = new TextBox();
-            textBox48 = new TextBox();
-            textBox49 = new TextBox();
+            val91 = new TextBox();
+            val92 = new TextBox();
+            val93 = new TextBox();
+            val94 = new TextBox();
+            val95 = new TextBox();
+            val96 = new TextBox();
+            val97 = new TextBox();
+            val98 = new TextBox();
+            val99 = new TextBox();
+            val90 = new TextBox();
+            val81 = new TextBox();
+            val82 = new TextBox();
+            val83 = new TextBox();
+            val84 = new TextBox();
+            val85 = new TextBox();
+            val86 = new TextBox();
+            val87 = new TextBox();
+            val88 = new TextBox();
+            val89 = new TextBox();
+            val80 = new TextBox();
+            val71 = new TextBox();
+            val72 = new TextBox();
+            val73 = new TextBox();
+            val74 = new TextBox();
+            val75 = new TextBox();
+            val76 = new TextBox();
+            val77 = new TextBox();
+            val78 = new TextBox();
+            val79 = new TextBox();
+            val70 = new TextBox();
+            val61 = new TextBox();
+            val62 = new TextBox();
+            val63 = new TextBox();
+            val64 = new TextBox();
+            val65 = new TextBox();
+            val66 = new TextBox();
+            val67 = new TextBox();
+            val68 = new TextBox();
+            val69 = new TextBox();
+            val60 = new TextBox();
+            val51 = new TextBox();
+            val52 = new TextBox();
+            val53 = new TextBox();
+            val54 = new TextBox();
+            val55 = new TextBox();
+            val56 = new TextBox();
+            val57 = new TextBox();
+            val58 = new TextBox();
+            val59 = new TextBox();
+            val50 = new TextBox();
             val41 = new TextBox();
             val42 = new TextBox();
             val43 = new TextBox();
@@ -168,7 +168,7 @@ namespace RNGenerator
             txtInput.Name = "txtInput";
             txtInput.Size = new Size(972, 23);
             txtInput.TabIndex = 0;
-            txtInput.TextChanged += txtInput_TextChanged;
+            //txtInput.TextChanged += txtInput_TextChanged;
             // 
             // txtOutput
             // 
@@ -200,16 +200,16 @@ namespace RNGenerator
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox91);
-            groupBox1.Controls.Add(textBox92);
-            groupBox1.Controls.Add(textBox93);
-            groupBox1.Controls.Add(textBox94);
-            groupBox1.Controls.Add(textBox95);
-            groupBox1.Controls.Add(textBox96);
-            groupBox1.Controls.Add(textBox97);
-            groupBox1.Controls.Add(textBox98);
-            groupBox1.Controls.Add(textBox99);
-            groupBox1.Controls.Add(textBox100);
+            groupBox1.Controls.Add(val01);
+            groupBox1.Controls.Add(val02);
+            groupBox1.Controls.Add(val03);
+            groupBox1.Controls.Add(val04);
+            groupBox1.Controls.Add(val05);
+            groupBox1.Controls.Add(val06);
+            groupBox1.Controls.Add(val07);
+            groupBox1.Controls.Add(val08);
+            groupBox1.Controls.Add(val09);
+            groupBox1.Controls.Add(val00);
             groupBox1.Controls.Add(val11);
             groupBox1.Controls.Add(val12);
             groupBox1.Controls.Add(val13);
@@ -220,56 +220,56 @@ namespace RNGenerator
             groupBox1.Controls.Add(val18);
             groupBox1.Controls.Add(val19);
             groupBox1.Controls.Add(val10);
-            groupBox1.Controls.Add(textBox80);
-            groupBox1.Controls.Add(textBox81);
-            groupBox1.Controls.Add(textBox82);
-            groupBox1.Controls.Add(textBox83);
-            groupBox1.Controls.Add(textBox84);
-            groupBox1.Controls.Add(textBox85);
-            groupBox1.Controls.Add(textBox86);
-            groupBox1.Controls.Add(textBox87);
-            groupBox1.Controls.Add(textBox88);
-            groupBox1.Controls.Add(textBox89);
-            groupBox1.Controls.Add(textBox70);
-            groupBox1.Controls.Add(textBox71);
-            groupBox1.Controls.Add(textBox72);
-            groupBox1.Controls.Add(textBox73);
-            groupBox1.Controls.Add(textBox74);
-            groupBox1.Controls.Add(textBox75);
-            groupBox1.Controls.Add(textBox76);
-            groupBox1.Controls.Add(textBox77);
-            groupBox1.Controls.Add(textBox78);
-            groupBox1.Controls.Add(textBox79);
-            groupBox1.Controls.Add(textBox60);
-            groupBox1.Controls.Add(textBox61);
-            groupBox1.Controls.Add(textBox62);
-            groupBox1.Controls.Add(textBox63);
-            groupBox1.Controls.Add(textBox64);
-            groupBox1.Controls.Add(textBox65);
-            groupBox1.Controls.Add(textBox66);
-            groupBox1.Controls.Add(textBox67);
-            groupBox1.Controls.Add(textBox68);
-            groupBox1.Controls.Add(textBox69);
-            groupBox1.Controls.Add(textBox50);
-            groupBox1.Controls.Add(textBox51);
-            groupBox1.Controls.Add(textBox52);
-            groupBox1.Controls.Add(textBox53);
-            groupBox1.Controls.Add(textBox54);
-            groupBox1.Controls.Add(textBox55);
-            groupBox1.Controls.Add(textBox56);
-            groupBox1.Controls.Add(textBox57);
-            groupBox1.Controls.Add(textBox58);
-            groupBox1.Controls.Add(textBox59);
-            groupBox1.Controls.Add(textBox40);
-            groupBox1.Controls.Add(textBox41);
-            groupBox1.Controls.Add(textBox42);
-            groupBox1.Controls.Add(textBox43);
-            groupBox1.Controls.Add(textBox44);
-            groupBox1.Controls.Add(textBox45);
-            groupBox1.Controls.Add(textBox46);
-            groupBox1.Controls.Add(textBox47);
-            groupBox1.Controls.Add(textBox48);
-            groupBox1.Controls.Add(textBox49);
+            groupBox1.Controls.Add(val91);
+            groupBox1.Controls.Add(val92);
+            groupBox1.Controls.Add(val93);
+            groupBox1.Controls.Add(val94);
+            groupBox1.Controls.Add(val95);
+            groupBox1.Controls.Add(val96);
+            groupBox1.Controls.Add(val97);
+            groupBox1.Controls.Add(val98);
+            groupBox1.Controls.Add(val99);
+            groupBox1.Controls.Add(val90);
+            groupBox1.Controls.Add(val81);
+            groupBox1.Controls.Add(val82);
+            groupBox1.Controls.Add(val83);
+            groupBox1.Controls.Add(val84);
+            groupBox1.Controls.Add(val85);
+            groupBox1.Controls.Add(val86);
+            groupBox1.Controls.Add(val87);
+            groupBox1.Controls.Add(val88);
+            groupBox1.Controls.Add(val89);
+            groupBox1.Controls.Add(val80);
+            groupBox1.Controls.Add(val71);
+            groupBox1.Controls.Add(val72);
+            groupBox1.Controls.Add(val73);
+            groupBox1.Controls.Add(val74);
+            groupBox1.Controls.Add(val75);
+            groupBox1.Controls.Add(val76);
+            groupBox1.Controls.Add(val77);
+            groupBox1.Controls.Add(val78);
+            groupBox1.Controls.Add(val79);
+            groupBox1.Controls.Add(val70);
+            groupBox1.Controls.Add(val61);
+            groupBox1.Controls.Add(val62);
+            groupBox1.Controls.Add(val63);
+            groupBox1.Controls.Add(val64);
+            groupBox1.Controls.Add(val65);
+            groupBox1.Controls.Add(val66);
+            groupBox1.Controls.Add(val67);
+            groupBox1.Controls.Add(val68);
+            groupBox1.Controls.Add(val69);
+            groupBox1.Controls.Add(val60);
+            groupBox1.Controls.Add(val51);
+            groupBox1.Controls.Add(val52);
+            groupBox1.Controls.Add(val53);
+            groupBox1.Controls.Add(val54);
+            groupBox1.Controls.Add(val55);
+            groupBox1.Controls.Add(val56);
+            groupBox1.Controls.Add(val57);
+            groupBox1.Controls.Add(val58);
+            groupBox1.Controls.Add(val59);
+            groupBox1.Controls.Add(val50);
             groupBox1.Controls.Add(val41);
             groupBox1.Controls.Add(val42);
             groupBox1.Controls.Add(val43);
@@ -327,75 +327,75 @@ namespace RNGenerator
             groupBox1.TabStop = false;
             groupBox1.Text = "2수조 격판 - A";
             // 
-            // textBox91
+            // val01
             // 
-            textBox91.Location = new Point(58, 364);
-            textBox91.Name = "textBox91";
-            textBox91.Size = new Size(42, 23);
-            textBox91.TabIndex = 130;
+            val01.Location = new Point(58, 364);
+            val01.Name = "val01";
+            val01.Size = new Size(42, 23);
+            val01.TabIndex = 130;
             // 
-            // textBox92
+            // val02
             // 
-            textBox92.Location = new Point(110, 364);
-            textBox92.Name = "textBox92";
-            textBox92.Size = new Size(42, 23);
-            textBox92.TabIndex = 129;
+            val02.Location = new Point(110, 364);
+            val02.Name = "val02";
+            val02.Size = new Size(42, 23);
+            val02.TabIndex = 129;
             // 
-            // textBox93
+            // val03
             // 
-            textBox93.Location = new Point(162, 364);
-            textBox93.Name = "textBox93";
-            textBox93.Size = new Size(42, 23);
-            textBox93.TabIndex = 128;
+            val03.Location = new Point(162, 364);
+            val03.Name = "val03";
+            val03.Size = new Size(42, 23);
+            val03.TabIndex = 128;
             // 
-            // textBox94
+            // val04
             // 
-            textBox94.Location = new Point(214, 364);
-            textBox94.Name = "textBox94";
-            textBox94.Size = new Size(42, 23);
-            textBox94.TabIndex = 127;
+            val04.Location = new Point(214, 364);
+            val04.Name = "val04";
+            val04.Size = new Size(42, 23);
+            val04.TabIndex = 127;
             // 
-            // textBox95
+            // val05
             // 
-            textBox95.Location = new Point(266, 364);
-            textBox95.Name = "textBox95";
-            textBox95.Size = new Size(42, 23);
-            textBox95.TabIndex = 126;
+            val05.Location = new Point(266, 364);
+            val05.Name = "val05";
+            val05.Size = new Size(42, 23);
+            val05.TabIndex = 126;
             // 
-            // textBox96
+            // val06
             // 
-            textBox96.Location = new Point(318, 364);
-            textBox96.Name = "textBox96";
-            textBox96.Size = new Size(42, 23);
-            textBox96.TabIndex = 125;
+            val06.Location = new Point(318, 364);
+            val06.Name = "val06";
+            val06.Size = new Size(42, 23);
+            val06.TabIndex = 125;
             // 
-            // textBox97
+            // val07
             // 
-            textBox97.Location = new Point(370, 364);
-            textBox97.Name = "textBox97";
-            textBox97.Size = new Size(42, 23);
-            textBox97.TabIndex = 124;
+            val07.Location = new Point(370, 364);
+            val07.Name = "val07";
+            val07.Size = new Size(42, 23);
+            val07.TabIndex = 124;
             // 
-            // textBox98
+            // val08
             // 
-            textBox98.Location = new Point(422, 364);
-            textBox98.Name = "textBox98";
-            textBox98.Size = new Size(42, 23);
-            textBox98.TabIndex = 123;
+            val08.Location = new Point(422, 364);
+            val08.Name = "val08";
+            val08.Size = new Size(42, 23);
+            val08.TabIndex = 123;
             // 
-            // textBox99
+            // val09
             // 
-            textBox99.Location = new Point(474, 364);
-            textBox99.Name = "textBox99";
-            textBox99.Size = new Size(42, 23);
-            textBox99.TabIndex = 122;
+            val09.Location = new Point(474, 364);
+            val09.Name = "val09";
+            val09.Size = new Size(42, 23);
+            val09.TabIndex = 122;
             // 
-            // textBox100
+            // val00
             // 
-            textBox100.Location = new Point(526, 364);
-            textBox100.Name = "textBox100";
-            textBox100.Size = new Size(42, 23);
-            textBox100.TabIndex = 121;
+            val00.Location = new Point(526, 364);
+            val00.Name = "val00";
+            val00.Size = new Size(42, 23);
+            val00.TabIndex = 121;
             // 
             // val11
             // 
@@ -443,7 +443,7 @@ namespace RNGenerator
             val16.Name = "val16";
             val16.Size = new Size(42, 23);
             val16.TabIndex = 115;
-            val16.Text = "ㅍ";
+            val16.Text = "ㅂ";
             // 
             // val17
             // 
@@ -477,355 +477,356 @@ namespace RNGenerator
             val10.TabIndex = 111;
             val10.Text = "ㅊ";
             // 
-            // textBox80
+            // val91
             // 
-            textBox80.Location = new Point(58, 328);
-            textBox80.Name = "textBox80";
-            textBox80.Size = new Size(42, 23);
-            textBox80.TabIndex = 110;
+            val91.Location = new Point(58, 328);
+            val91.Name = "val91";
+            val91.Size = new Size(42, 23);
+            val91.TabIndex = 110;
             // 
-            // textBox81
+            // val92
             // 
-            textBox81.Location = new Point(110, 328);
-            textBox81.Name = "textBox81";
-            textBox81.Size = new Size(42, 23);
-            textBox81.TabIndex = 109;
+            val92.Location = new Point(110, 328);
+            val92.Name = "val92";
+            val92.Size = new Size(42, 23);
+            val92.TabIndex = 109;
             // 
-            // textBox82
+            // val93
             // 
-            textBox82.Location = new Point(162, 328);
-            textBox82.Name = "textBox82";
-            textBox82.Size = new Size(42, 23);
-            textBox82.TabIndex = 108;
+            val93.Location = new Point(162, 328);
+            val93.Name = "val93";
+            val93.Size = new Size(42, 23);
+            val93.TabIndex = 108;
             // 
-            // textBox83
+            // val94
             // 
-            textBox83.Location = new Point(214, 328);
-            textBox83.Name = "textBox83";
-            textBox83.Size = new Size(42, 23);
-            textBox83.TabIndex = 107;
+            val94.Location = new Point(214, 328);
+            val94.Name = "val94";
+            val94.Size = new Size(42, 23);
+            val94.TabIndex = 107;
             // 
-            // textBox84
+            // val95
             // 
-            textBox84.Location = new Point(266, 328);
-            textBox84.Name = "textBox84";
-            textBox84.Size = new Size(42, 23);
-            textBox84.TabIndex = 106;
+            val95.Location = new Point(266, 328);
+            val95.Name = "val95";
+            val95.Size = new Size(42, 23);
+            val95.TabIndex = 106;
             // 
-            // textBox85
+            // val96
             // 
-            textBox85.Location = new Point(318, 328);
-            textBox85.Name = "textBox85";
-            textBox85.Size = new Size(42, 23);
-            textBox85.TabIndex = 105;
+            val96.Location = new Point(318, 328);
+            val96.Name = "val96";
+            val96.Size = new Size(42, 23);
+            val96.TabIndex = 105;
             // 
-            // textBox86
+            // val97
             // 
-            textBox86.Location = new Point(370, 328);
-            textBox86.Name = "textBox86";
-            textBox86.Size = new Size(42, 23);
-            textBox86.TabIndex = 104;
+            val97.Location = new Point(370, 328);
+            val97.Name = "val97";
+            val97.Size = new Size(42, 23);
+            val97.TabIndex = 104;
             // 
-            // textBox87
+            // val98
             // 
-            textBox87.Location = new Point(422, 328);
-            textBox87.Name = "textBox87";
-            textBox87.Size = new Size(42, 23);
-            textBox87.TabIndex = 103;
+            val98.Location = new Point(422, 328);
+            val98.Name = "val98";
+            val98.Size = new Size(42, 23);
+            val98.TabIndex = 103;
             // 
-            // textBox88
+            // val99
             // 
-            textBox88.Location = new Point(474, 328);
-            textBox88.Name = "textBox88";
-            textBox88.Size = new Size(42, 23);
-            textBox88.TabIndex = 102;
+            val99.Location = new Point(474, 328);
+            val99.Name = "val99";
+            val99.Size = new Size(42, 23);
+            val99.TabIndex = 102;
             // 
-            // textBox89
+            // val90
             // 
-            textBox89.Location = new Point(526, 328);
-            textBox89.Name = "textBox89";
-            textBox89.Size = new Size(42, 23);
-            textBox89.TabIndex = 101;
+            val90.Location = new Point(526, 328);
+            val90.Name = "val90";
+            val90.Size = new Size(42, 23);
+            val90.TabIndex = 101;
             // 
-            // textBox70
+            // val81
             // 
-            textBox70.Location = new Point(58, 292);
-            textBox70.Name = "textBox70";
-            textBox70.Size = new Size(42, 23);
-            textBox70.TabIndex = 100;
+            val81.Location = new Point(58, 292);
+            val81.Name = "val81";
+            val81.Size = new Size(42, 23);
+            val81.TabIndex = 100;
             // 
-            // textBox71
+            // val82
             // 
-            textBox71.Location = new Point(110, 292);
-            textBox71.Name = "textBox71";
-            textBox71.Size = new Size(42, 23);
-            textBox71.TabIndex = 99;
+            val82.Location = new Point(110, 292);
+            val82.Name = "val82";
+            val82.Size = new Size(42, 23);
+            val82.TabIndex = 99;
             // 
-            // textBox72
+            // val83
             // 
-            textBox72.Location = new Point(162, 292);
-            textBox72.Name = "textBox72";
-            textBox72.Size = new Size(42, 23);
-            textBox72.TabIndex = 98;
+            val83.Location = new Point(162, 292);
+            val83.Name = "val83";
+            val83.Size = new Size(42, 23);
+            val83.TabIndex = 98;
             // 
-            // textBox73
+            // val84
             // 
-            textBox73.Location = new Point(214, 292);
-            textBox73.Name = "textBox73";
-            textBox73.Size = new Size(42, 23);
-            textBox73.TabIndex = 97;
+            val84.Location = new Point(214, 292);
+            val84.Name = "val84";
+            val84.Size = new Size(42, 23);
+            val84.TabIndex = 97;
             // 
-            // textBox74
+            // val85
             // 
-            textBox74.Location = new Point(266, 292);
-            textBox74.Name = "textBox74";
-            textBox74.Size = new Size(42, 23);
-            textBox74.TabIndex = 96;
+            val85.Location = new Point(266, 292);
+            val85.Name = "val85";
+            val85.Size = new Size(42, 23);
+            val85.TabIndex = 96;
             // 
-            // textBox75
+            // val86
             // 
-            textBox75.Location = new Point(318, 292);
-            textBox75.Name = "textBox75";
-            textBox75.Size = new Size(42, 23);
-            textBox75.TabIndex = 95;
+            val86.Location = new Point(318, 292);
+            val86.Name = "val86";
+            val86.Size = new Size(42, 23);
+            val86.TabIndex = 95;
             // 
-            // textBox76
+            // val87
             // 
-            textBox76.Location = new Point(370, 292);
-            textBox76.Name = "textBox76";
-            textBox76.Size = new Size(42, 23);
-            textBox76.TabIndex = 94;
+            val87.Location = new Point(370, 292);
+            val87.Name = "val87";
+            val87.Size = new Size(42, 23);
+            val87.TabIndex = 94;
             // 
-            // textBox77
+            // val88
             // 
-            textBox77.Location = new Point(422, 292);
-            textBox77.Name = "textBox77";
-            textBox77.Size = new Size(42, 23);
-            textBox77.TabIndex = 93;
+            val88.Location = new Point(422, 292);
+            val88.Name = "val88";
+            val88.Size = new Size(42, 23);
+            val88.TabIndex = 93;
             // 
-            // textBox78
+            // val89
             // 
-            textBox78.Location = new Point(474, 292);
-            textBox78.Name = "textBox78";
-            textBox78.Size = new Size(42, 23);
-            textBox78.TabIndex = 92;
+            val89.Location = new Point(474, 292);
+            val89.Name = "val89";
+            val89.Size = new Size(42, 23);
+            val89.TabIndex = 92;
             // 
-            // textBox79
+            // val80
             // 
-            textBox79.Location = new Point(526, 292);
-            textBox79.Name = "textBox79";
-            textBox79.Size = new Size(42, 23);
-            textBox79.TabIndex = 91;
+            val80.Location = new Point(526, 292);
+            val80.Name = "val80";
+            val80.Size = new Size(42, 23);
+            val80.TabIndex = 91;
             // 
-            // textBox60
+            // val71
             // 
-            textBox60.Location = new Point(58, 256);
-            textBox60.Name = "textBox60";
-            textBox60.Size = new Size(42, 23);
-            textBox60.TabIndex = 90;
+            val71.Location = new Point(58, 256);
+            val71.Name = "val71";
+            val71.Size = new Size(42, 23);
+            val71.TabIndex = 90;
             // 
-            // textBox61
+            // val72
             // 
-            textBox61.Location = new Point(110, 256);
-            textBox61.Name = "textBox61";
-            textBox61.Size = new Size(42, 23);
-            textBox61.TabIndex = 89;
+            val72.Location = new Point(110, 256);
+            val72.Name = "val72";
+            val72.Size = new Size(42, 23);
+            val72.TabIndex = 89;
             // 
-            // textBox62
+            // val73
             // 
-            textBox62.Location = new Point(162, 256);
-            textBox62.Name = "textBox62";
-            textBox62.Size = new Size(42, 23);
-            textBox62.TabIndex = 88;
+            val73.Location = new Point(162, 256);
+            val73.Name = "val73";
+            val73.Size = new Size(42, 23);
+            val73.TabIndex = 88;
             // 
-            // textBox63
+            // val74
             // 
-            textBox63.Location = new Point(214, 256);
-            textBox63.Name = "textBox63";
-            textBox63.Size = new Size(42, 23);
-            textBox63.TabIndex = 87;
+            val74.Location = new Point(214, 256);
+            val74.Name = "val74";
+            val74.Size = new Size(42, 23);
+            val74.TabIndex = 87;
             // 
-            // textBox64
+            // val75
             // 
-            textBox64.Location = new Point(266, 256);
-            textBox64.Name = "textBox64";
-            textBox64.Size = new Size(42, 23);
-            textBox64.TabIndex = 86;
+            val75.Location = new Point(266, 256);
+            val75.Name = "val75";
+            val75.Size = new Size(42, 23);
+            val75.TabIndex = 86;
             // 
-            // textBox65
+            // val76
             // 
-            textBox65.Location = new Point(318, 256);
-            textBox65.Name = "textBox65";
-            textBox65.Size = new Size(42, 23);
-            textBox65.TabIndex = 85;
+            val76.Location = new Point(318, 256);
+            val76.Name = "val76";
+            val76.Size = new Size(42, 23);
+            val76.TabIndex = 85;
             // 
-            // textBox66
+            // val77
             // 
-            textBox66.Location = new Point(370, 256);
-            textBox66.Name = "textBox66";
-            textBox66.Size = new Size(42, 23);
-            textBox66.TabIndex = 84;
+            val77.Location = new Point(370, 256);
+            val77.Name = "val77";
+            val77.Size = new Size(42, 23);
+            val77.TabIndex = 84;
             // 
-            // textBox67
+            // val78
             // 
-            textBox67.Location = new Point(422, 256);
-            textBox67.Name = "textBox67";
-            textBox67.Size = new Size(42, 23);
-            textBox67.TabIndex = 83;
+            val78.Location = new Point(422, 256);
+            val78.Name = "val78";
+            val78.Size = new Size(42, 23);
+            val78.TabIndex = 83;
             // 
-            // textBox68
+            // val79
             // 
-            textBox68.Location = new Point(474, 256);
-            textBox68.Name = "textBox68";
-            textBox68.Size = new Size(42, 23);
-            textBox68.TabIndex = 82;
+            val79.Location = new Point(474, 256);
+            val79.Name = "val79";
+            val79.Size = new Size(42, 23);
+            val79.TabIndex = 82;
             // 
-            // textBox69
+            // val70
             // 
-            textBox69.Location = new Point(526, 256);
-            textBox69.Name = "textBox69";
-            textBox69.Size = new Size(42, 23);
-            textBox69.TabIndex = 81;
+            val70.Location = new Point(526, 256);
+            val70.Name = "val70";
+            val70.Size = new Size(42, 23);
+            val70.TabIndex = 81;
             // 
-            // textBox50
+            // val61
             // 
-            textBox50.Location = new Point(58, 220);
-            textBox50.Name = "textBox50";
-            textBox50.Size = new Size(42, 23);
-            textBox50.TabIndex = 80;
+            val61.Location = new Point(58, 220);
+            val61.Name = "val61";
+            val61.Size = new Size(42, 23);
+            val61.TabIndex = 80;
             // 
-            // textBox51
+            // val62
             // 
-            textBox51.Location = new Point(110, 220);
-            textBox51.Name = "textBox51";
-            textBox51.Size = new Size(42, 23);
-            textBox51.TabIndex = 79;
+            val62.Location = new Point(110, 220);
+            val62.Name = "val62";
+            val62.Size = new Size(42, 23);
+            val62.TabIndex = 79;
             // 
-            // textBox52
+            // val63
             // 
-            textBox52.Location = new Point(162, 220);
-            textBox52.Name = "textBox52";
-            textBox52.Size = new Size(42, 23);
-            textBox52.TabIndex = 78;
+            val63.Location = new Point(162, 220);
+            val63.Name = "val63";
+            val63.Size = new Size(42, 23);
+            val63.TabIndex = 78;
             // 
-            // textBox53
+            // val64
             // 
-            textBox53.Location = new Point(214, 220);
-            textBox53.Name = "textBox53";
-            textBox53.Size = new Size(42, 23);
-            textBox53.TabIndex = 77;
+            val64.Location = new Point(214, 220);
+            val64.Name = "val64";
+            val64.Size = new Size(42, 23);
+            val64.TabIndex = 77;
             // 
-            // textBox54
+            // val65
             // 
-            textBox54.Location = new Point(266, 220);
-            textBox54.Name = "textBox54";
-            textBox54.Size = new Size(42, 23);
-            textBox54.TabIndex = 76;
+            val65.Location = new Point(266, 220);
+            val65.Name = "val65";
+            val65.Size = new Size(42, 23);
+            val65.TabIndex = 76;
             // 
-            // textBox55
+            // val66
             // 
-            textBox55.Location = new Point(318, 220);
-            textBox55.Name = "textBox55";
-            textBox55.Size = new Size(42, 23);
-            textBox55.TabIndex = 75;
+            val66.Location = new Point(318, 220);
+            val66.Name = "val66";
+            val66.Size = new Size(42, 23);
+            val66.TabIndex = 75;
             // 
-            // textBox56
+            // val67
             // 
-            textBox56.Location = new Point(370, 220);
-            textBox56.Name = "textBox56";
-            textBox56.Size = new Size(42, 23);
-            textBox56.TabIndex = 74;
+            val67.Location = new Point(370, 220);
+            val67.Name = "val67";
+            val67.Size = new Size(42, 23);
+            val67.TabIndex = 74;
             // 
-            // textBox57
+            // val68
             // 
-            textBox57.Location = new Point(422, 220);
-            textBox57.Name = "textBox57";
-            textBox57.Size = new Size(42, 23);
-            textBox57.TabIndex = 73;
+            val68.Location = new Point(422, 220);
+            val68.Name = "val68";
+            val68.Size = new Size(42, 23);
+            val68.TabIndex = 73;
             // 
-            // textBox58
+            // val69
             // 
-            textBox58.Location = new Point(474, 220);
-            textBox58.Name = "textBox58";
-            textBox58.Size = new Size(42, 23);
-            textBox58.TabIndex = 72;
+            val69.Location = new Point(474, 220);
+            val69.Name = "val69";
+            val69.Size = new Size(42, 23);
+            val69.TabIndex = 72;
             // 
-            // textBox59
+            // val60
             // 
-            textBox59.Location = new Point(526, 220);
-            textBox59.Name = "textBox59";
-            textBox59.Size = new Size(42, 23);
-            textBox59.TabIndex = 71;
+            val60.Location = new Point(526, 220);
+            val60.Name = "val60";
+            val60.Size = new Size(42, 23);
+            val60.TabIndex = 71;
             // 
-            // textBox40
+            // val51
             // 
-            textBox40.Location = new Point(58, 184);
-            textBox40.Name = "textBox40";
-            textBox40.Size = new Size(42, 23);
-            textBox40.TabIndex = 70;
+            val51.Location = new Point(58, 184);
+            val51.Name = "val51";
+            val51.Size = new Size(42, 23);
+            val51.TabIndex = 70;
+            val51.Text = "ㅣ";
             // 
-            // textBox41
+            // val52
             // 
-            textBox41.Location = new Point(110, 184);
-            textBox41.Name = "textBox41";
-            textBox41.Size = new Size(42, 23);
-            textBox41.TabIndex = 69;
+            val52.Location = new Point(110, 184);
+            val52.Name = "val52";
+            val52.Size = new Size(42, 23);
+            val52.TabIndex = 69;
             // 
-            // textBox42
+            // val53
             // 
-            textBox42.Location = new Point(162, 184);
-            textBox42.Name = "textBox42";
-            textBox42.Size = new Size(42, 23);
-            textBox42.TabIndex = 68;
+            val53.Location = new Point(162, 184);
+            val53.Name = "val53";
+            val53.Size = new Size(42, 23);
+            val53.TabIndex = 68;
             // 
-            // textBox43
+            // val54
             // 
-            textBox43.Location = new Point(214, 184);
-            textBox43.Name = "textBox43";
-            textBox43.Size = new Size(42, 23);
-            textBox43.TabIndex = 67;
+            val54.Location = new Point(214, 184);
+            val54.Name = "val54";
+            val54.Size = new Size(42, 23);
+            val54.TabIndex = 67;
             // 
-            // textBox44
+            // val55
             // 
-            textBox44.Location = new Point(266, 184);
-            textBox44.Name = "textBox44";
-            textBox44.Size = new Size(42, 23);
-            textBox44.TabIndex = 66;
+            val55.Location = new Point(266, 184);
+            val55.Name = "val55";
+            val55.Size = new Size(42, 23);
+            val55.TabIndex = 66;
             // 
-            // textBox45
+            // val56
             // 
-            textBox45.Location = new Point(318, 184);
-            textBox45.Name = "textBox45";
-            textBox45.Size = new Size(42, 23);
-            textBox45.TabIndex = 65;
+            val56.Location = new Point(318, 184);
+            val56.Name = "val56";
+            val56.Size = new Size(42, 23);
+            val56.TabIndex = 65;
             // 
-            // textBox46
+            // val57
             // 
-            textBox46.Location = new Point(370, 184);
-            textBox46.Name = "textBox46";
-            textBox46.Size = new Size(42, 23);
-            textBox46.TabIndex = 64;
+            val57.Location = new Point(370, 184);
+            val57.Name = "val57";
+            val57.Size = new Size(42, 23);
+            val57.TabIndex = 64;
             // 
-            // textBox47
+            // val58
             // 
-            textBox47.Location = new Point(422, 184);
-            textBox47.Name = "textBox47";
-            textBox47.Size = new Size(42, 23);
-            textBox47.TabIndex = 63;
+            val58.Location = new Point(422, 184);
+            val58.Name = "val58";
+            val58.Size = new Size(42, 23);
+            val58.TabIndex = 63;
             // 
-            // textBox48
+            // val59
             // 
-            textBox48.Location = new Point(474, 184);
-            textBox48.Name = "textBox48";
-            textBox48.Size = new Size(42, 23);
-            textBox48.TabIndex = 62;
+            val59.Location = new Point(474, 184);
+            val59.Name = "val59";
+            val59.Size = new Size(42, 23);
+            val59.TabIndex = 62;
             // 
-            // textBox49
+            // val50
             // 
-            textBox49.Location = new Point(526, 184);
-            textBox49.Name = "textBox49";
-            textBox49.Size = new Size(42, 23);
-            textBox49.TabIndex = 61;
+            val50.Location = new Point(526, 184);
+            val50.Name = "val50";
+            val50.Size = new Size(42, 23);
+            val50.TabIndex = 61;
             // 
             // val41
             // 
@@ -833,6 +834,7 @@ namespace RNGenerator
             val41.Name = "val41";
             val41.Size = new Size(42, 23);
             val41.TabIndex = 60;
+            val41.Text = "ㅙ";
             // 
             // val42
             // 
@@ -840,6 +842,7 @@ namespace RNGenerator
             val42.Name = "val42";
             val42.Size = new Size(42, 23);
             val42.TabIndex = 59;
+            val42.Text = "ㅚ";
             // 
             // val43
             // 
@@ -847,6 +850,7 @@ namespace RNGenerator
             val43.Name = "val43";
             val43.Size = new Size(42, 23);
             val43.TabIndex = 58;
+            val43.Text = "ㅛ";
             // 
             // val44
             // 
@@ -854,6 +858,7 @@ namespace RNGenerator
             val44.Name = "val44";
             val44.Size = new Size(42, 23);
             val44.TabIndex = 57;
+            val44.Text = "ㅜ";
             // 
             // val45
             // 
@@ -861,6 +866,7 @@ namespace RNGenerator
             val45.Name = "val45";
             val45.Size = new Size(42, 23);
             val45.TabIndex = 56;
+            val45.Text = "ㅝ";
             // 
             // val46
             // 
@@ -868,6 +874,7 @@ namespace RNGenerator
             val46.Name = "val46";
             val46.Size = new Size(42, 23);
             val46.TabIndex = 55;
+            val46.Text = "ㅞ";
             // 
             // val47
             // 
@@ -875,6 +882,7 @@ namespace RNGenerator
             val47.Name = "val47";
             val47.Size = new Size(42, 23);
             val47.TabIndex = 54;
+            val47.Text = "ㅟ";
             // 
             // val48
             // 
@@ -882,6 +890,7 @@ namespace RNGenerator
             val48.Name = "val48";
             val48.Size = new Size(42, 23);
             val48.TabIndex = 53;
+            val48.Text = "ㅠ";
             // 
             // val49
             // 
@@ -889,6 +898,7 @@ namespace RNGenerator
             val49.Name = "val49";
             val49.Size = new Size(42, 23);
             val49.TabIndex = 52;
+            val49.Text = "ㅡ";
             // 
             // val40
             // 
@@ -896,6 +906,7 @@ namespace RNGenerator
             val40.Name = "val40";
             val40.Size = new Size(42, 23);
             val40.TabIndex = 51;
+            val40.Text = "ㅢ";
             // 
             // val31
             // 
@@ -911,7 +922,7 @@ namespace RNGenerator
             val32.Name = "val32";
             val32.Size = new Size(42, 23);
             val32.TabIndex = 49;
-            val32.Text = "ㅑ";
+            val32.Text = "ㅐ";
             // 
             // val33
             // 
@@ -919,7 +930,7 @@ namespace RNGenerator
             val33.Name = "val33";
             val33.Size = new Size(42, 23);
             val33.TabIndex = 48;
-            val33.Text = "ㅓ";
+            val33.Text = "ㅑ";
             // 
             // val34
             // 
@@ -927,7 +938,7 @@ namespace RNGenerator
             val34.Name = "val34";
             val34.Size = new Size(42, 23);
             val34.TabIndex = 47;
-            val34.Text = "ㅕ";
+            val34.Text = "ㅒ";
             // 
             // val35
             // 
@@ -935,7 +946,7 @@ namespace RNGenerator
             val35.Name = "val35";
             val35.Size = new Size(42, 23);
             val35.TabIndex = 46;
-            val35.Text = "ㅗ";
+            val35.Text = "ㅓ";
             // 
             // val36
             // 
@@ -943,7 +954,7 @@ namespace RNGenerator
             val36.Name = "val36";
             val36.Size = new Size(42, 23);
             val36.TabIndex = 45;
-            val36.Text = "ㅛ";
+            val36.Text = "ㅔ";
             // 
             // val37
             // 
@@ -951,7 +962,7 @@ namespace RNGenerator
             val37.Name = "val37";
             val37.Size = new Size(42, 23);
             val37.TabIndex = 44;
-            val37.Text = "ㅜ";
+            val37.Text = "ㅕ";
             // 
             // val38
             // 
@@ -959,7 +970,7 @@ namespace RNGenerator
             val38.Name = "val38";
             val38.Size = new Size(42, 23);
             val38.TabIndex = 43;
-            val38.Text = "ㅠ";
+            val38.Text = "ㅖ";
             // 
             // val39
             // 
@@ -967,7 +978,7 @@ namespace RNGenerator
             val39.Name = "val39";
             val39.Size = new Size(42, 23);
             val39.TabIndex = 42;
-            val39.Text = "ㅡ";
+            val39.Text = "ㅗ";
             // 
             // val30
             // 
@@ -975,7 +986,7 @@ namespace RNGenerator
             val30.Name = "val30";
             val30.Size = new Size(42, 23);
             val30.TabIndex = 41;
-            val30.Text = "ㅣ";
+            val30.Text = "ㅘ";
             // 
             // label19
             // 
@@ -1168,7 +1179,6 @@ namespace RNGenerator
             val25.Name = "val25";
             val25.Size = new Size(42, 23);
             val25.TabIndex = 11;
-            val25.Text = "ㅂ";
             // 
             // val26
             // 
@@ -1248,7 +1258,7 @@ namespace RNGenerator
             ResumeLayout(false);
             PerformLayout();
         }
-
+        /*
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
             StringBuilder sbOutput = new StringBuilder();
@@ -1310,13 +1320,80 @@ namespace RNGenerator
                 machingValue = MatchingValue(val49, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
                 machingValue = MatchingValue(val40, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
 
+                machingValue = MatchingValue(val51, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val52, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val53, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val54, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val55, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val56, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val57, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val58, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val59, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val50, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+
+
+                machingValue = MatchingValue(val61, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val62, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val63, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val64, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val65, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val66, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val67, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val68, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val69, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val60, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+
+                machingValue = MatchingValue(val71, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val72, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val73, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val74, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val75, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val76, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val77, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val78, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val79, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val70, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+
+                machingValue = MatchingValue(val81, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val82, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val83, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val84, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val85, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val86, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val87, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val88, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val89, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val80, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+
+                machingValue = MatchingValue(val91, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val92, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val93, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val94, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val95, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val96, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val97, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val98, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val99, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val90, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+
+                machingValue = MatchingValue(val01, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val02, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val03, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val04, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val05, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val06, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val07, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val08, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val09, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+                machingValue = MatchingValue(val00, c); if (machingValue != null) { sbOutput.Append(machingValue); continue; }
+
                 //if(c != null)
                 sbOutput.Append(c); //못찾음
             }
 
             txtOutput.Text = sbOutput.ToString();
         }
-
+        
         private String MatchingValue(TextBox tb, char value)
         {
             if (tb.Text.Length == 0)
@@ -1327,7 +1404,7 @@ namespace RNGenerator
 
             return null;
         }
-
+        */
         #endregion
 
         private TextBox txtInput;
@@ -1336,16 +1413,16 @@ namespace RNGenerator
         private GroupBox groupBox1;
         private Label label1;
         private Label AxisY;
-        private TextBox textBox40;
-        private TextBox textBox41;
-        private TextBox textBox42;
-        private TextBox textBox43;
-        private TextBox textBox44;
-        private TextBox textBox45;
-        private TextBox textBox46;
-        private TextBox textBox47;
-        private TextBox textBox48;
-        private TextBox textBox49;
+        private TextBox val51;
+        private TextBox val52;
+        private TextBox val53;
+        private TextBox val54;
+        private TextBox val55;
+        private TextBox val56;
+        private TextBox val57;
+        private TextBox val58;
+        private TextBox val59;
+        private TextBox val50;
         private TextBox val41;
         private TextBox val42;
         private TextBox val43;
@@ -1394,16 +1471,16 @@ namespace RNGenerator
         private TextBox val29;
         private TextBox val20;
         private Label label2;
-        private TextBox textBox91;
-        private TextBox textBox92;
-        private TextBox textBox93;
-        private TextBox textBox94;
-        private TextBox textBox95;
-        private TextBox textBox96;
-        private TextBox textBox97;
-        private TextBox textBox98;
-        private TextBox textBox99;
-        private TextBox textBox100;
+        private TextBox val01;
+        private TextBox val02;
+        private TextBox val03;
+        private TextBox val04;
+        private TextBox val05;
+        private TextBox val06;
+        private TextBox val07;
+        private TextBox val08;
+        private TextBox val09;
+        private TextBox val00;
         private TextBox val11;
         private TextBox val12;
         private TextBox val13;
@@ -1414,46 +1491,46 @@ namespace RNGenerator
         private TextBox val18;
         private TextBox val19;
         private TextBox val10;
-        private TextBox textBox80;
-        private TextBox textBox81;
-        private TextBox textBox82;
-        private TextBox textBox83;
-        private TextBox textBox84;
-        private TextBox textBox85;
-        private TextBox textBox86;
-        private TextBox textBox87;
-        private TextBox textBox88;
-        private TextBox textBox89;
-        private TextBox textBox70;
-        private TextBox textBox71;
-        private TextBox textBox72;
-        private TextBox textBox73;
-        private TextBox textBox74;
-        private TextBox textBox75;
-        private TextBox textBox76;
-        private TextBox textBox77;
-        private TextBox textBox78;
-        private TextBox textBox79;
-        private TextBox textBox60;
-        private TextBox textBox61;
-        private TextBox textBox62;
-        private TextBox textBox63;
-        private TextBox textBox64;
-        private TextBox textBox65;
-        private TextBox textBox66;
-        private TextBox textBox67;
-        private TextBox textBox68;
-        private TextBox textBox69;
-        private TextBox textBox50;
-        private TextBox textBox51;
-        private TextBox textBox52;
-        private TextBox textBox53;
-        private TextBox textBox54;
-        private TextBox textBox55;
-        private TextBox textBox56;
-        private TextBox textBox57;
-        private TextBox textBox58;
-        private TextBox textBox59;
+        private TextBox val91;
+        private TextBox val92;
+        private TextBox val93;
+        private TextBox val94;
+        private TextBox val95;
+        private TextBox val96;
+        private TextBox val97;
+        private TextBox val98;
+        private TextBox val99;
+        private TextBox val90;
+        private TextBox val81;
+        private TextBox val82;
+        private TextBox val83;
+        private TextBox val84;
+        private TextBox val85;
+        private TextBox val86;
+        private TextBox val87;
+        private TextBox val88;
+        private TextBox val89;
+        private TextBox val80;
+        private TextBox val71;
+        private TextBox val72;
+        private TextBox val73;
+        private TextBox val74;
+        private TextBox val75;
+        private TextBox val76;
+        private TextBox val77;
+        private TextBox val78;
+        private TextBox val79;
+        private TextBox val70;
+        private TextBox val61;
+        private TextBox val62;
+        private TextBox val63;
+        private TextBox val64;
+        private TextBox val65;
+        private TextBox val66;
+        private TextBox val67;
+        private TextBox val68;
+        private TextBox val69;
+        private TextBox val60;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
     }
