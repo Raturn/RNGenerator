@@ -158,6 +158,31 @@ namespace RNGenerator
 
             txtOutput.Text = sbOutput.ToString();
         }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox11_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox140_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox545_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         //-------------------------------------------------------------
     }
 }
