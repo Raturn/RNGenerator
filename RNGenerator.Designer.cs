@@ -33,11 +33,17 @@ namespace RNGenerator
         {
             tabPage10 = new TabPage();
             groupBox21 = new GroupBox();
-            ContentDel3 = new Button();
+            groupBox1 = new GroupBox();
+            KeyValPaste3 = new Button();
+            KeyValCopy3 = new Button();
+            ContentPaste3 = new Button();
+            ContentCopy3 = new Button();
+            groupBox4 = new GroupBox();
             RowDel3 = new Button();
+            ContentDel3 = new Button();
+            KeyValDel3 = new Button();
             groupBox3 = new GroupBox();
             AddSymbol2 = new Button();
-            ContentPaste3 = new Button();
             MultiValCY1to3 = new TextBox();
             MultiValCY1to2 = new TextBox();
             MultiValCX2to3 = new TextBox();
@@ -51,7 +57,6 @@ namespace RNGenerator
             MultiValCY2to2 = new TextBox();
             MultiValCY2to1 = new TextBox();
             Download3 = new Button();
-            ContentCopy3 = new Button();
             groupBox22 = new GroupBox();
             Diagonal3 = new Button();
             LR3 = new Button();
@@ -179,16 +184,22 @@ namespace RNGenerator
             MetrixC2to10 = new TextBox();
             label27 = new Label();
             groupBox23 = new GroupBox();
-            Output3 = new TextBox();
+            Output_C = new TextBox();
             groupBox24 = new GroupBox();
-            Input3 = new TextBox();
+            Input_C = new TextBox();
             tabPage9 = new TabPage();
             groupBox17 = new GroupBox();
-            ContentDel2 = new Button();
+            groupBox5 = new GroupBox();
+            ContentPaste2 = new Button();
+            ContentCopy2 = new Button();
+            KeyValPaste2 = new Button();
+            KeyValCopy2 = new Button();
+            groupBox6 = new GroupBox();
+            KeyValDel2 = new Button();
             RowDel2 = new Button();
+            ContentDel2 = new Button();
             groupBox2 = new GroupBox();
             AddSymbol1 = new Button();
-            ContentPaste2 = new Button();
             MultiValBX2to5 = new TextBox();
             MultiValBX2to4 = new TextBox();
             MultiValBX2to3 = new TextBox();
@@ -210,7 +221,6 @@ namespace RNGenerator
             MultiValBY2to2 = new TextBox();
             MultiValBY2to1 = new TextBox();
             Download2 = new Button();
-            ContentCopy2 = new Button();
             groupBox18 = new GroupBox();
             Diagonal2 = new Button();
             LR2 = new Button();
@@ -338,13 +348,20 @@ namespace RNGenerator
             MetrixB2to10 = new TextBox();
             label22 = new Label();
             groupBox19 = new GroupBox();
-            Output2 = new TextBox();
+            Output_B = new TextBox();
             groupBox20 = new GroupBox();
-            Input2 = new TextBox();
+            Input_B = new TextBox();
             tabPage8 = new TabPage();
             groupBox13 = new GroupBox();
-            ContentDel1 = new Button();
+            groupBox7 = new GroupBox();
+            KeyValPaste1 = new Button();
+            KeyValCopy1 = new Button();
+            ContentCopy1 = new Button();
+            ContentPaste1 = new Button();
+            groupBox8 = new GroupBox();
+            KeyValDel1 = new Button();
             RowDel1 = new Button();
+            ContentDel1 = new Button();
             MultiValAX1to10 = new TextBox();
             MultiValAX1to9 = new TextBox();
             MultiValAX1to8 = new TextBox();
@@ -385,9 +402,7 @@ namespace RNGenerator
             MultiValAY2to3 = new TextBox();
             MultiValAY2to2 = new TextBox();
             MultiValAY2to1 = new TextBox();
-            ContentPaste1 = new Button();
             Download1 = new Button();
-            ContentCopy1 = new Button();
             groupBox14 = new GroupBox();
             Diagonal1 = new Button();
             LR1 = new Button();
@@ -515,24 +530,30 @@ namespace RNGenerator
             MetrixA2to10 = new TextBox();
             label6 = new Label();
             groupBox15 = new GroupBox();
-            Output1 = new TextBox();
+            Output_A = new TextBox();
             groupBox16 = new GroupBox();
-            Input1 = new TextBox();
+            Input_A = new TextBox();
             tabControl1 = new TabControl();
             tabPage10.SuspendLayout();
             groupBox21.SuspendLayout();
+            groupBox1.SuspendLayout();
+            groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox22.SuspendLayout();
             groupBox23.SuspendLayout();
             groupBox24.SuspendLayout();
             tabPage9.SuspendLayout();
             groupBox17.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox18.SuspendLayout();
             groupBox19.SuspendLayout();
             groupBox20.SuspendLayout();
             tabPage8.SuspendLayout();
             groupBox13.SuspendLayout();
+            groupBox7.SuspendLayout();
+            groupBox8.SuspendLayout();
             groupBox14.SuspendLayout();
             groupBox15.SuspendLayout();
             groupBox16.SuspendLayout();
@@ -555,10 +576,9 @@ namespace RNGenerator
             // groupBox21
             // 
             groupBox21.BackColor = SystemColors.Window;
-            groupBox21.Controls.Add(ContentDel3);
-            groupBox21.Controls.Add(RowDel3);
+            groupBox21.Controls.Add(groupBox1);
+            groupBox21.Controls.Add(groupBox4);
             groupBox21.Controls.Add(groupBox3);
-            groupBox21.Controls.Add(ContentPaste3);
             groupBox21.Controls.Add(MultiValCY1to3);
             groupBox21.Controls.Add(MultiValCY1to2);
             groupBox21.Controls.Add(MultiValCX2to3);
@@ -572,7 +592,6 @@ namespace RNGenerator
             groupBox21.Controls.Add(MultiValCY2to2);
             groupBox21.Controls.Add(MultiValCY2to1);
             groupBox21.Controls.Add(Download3);
-            groupBox21.Controls.Add(ContentCopy3);
             groupBox21.Controls.Add(groupBox22);
             groupBox21.Controls.Add(label26);
             groupBox21.Controls.Add(MetrixCXKey10);
@@ -703,28 +722,104 @@ namespace RNGenerator
             groupBox21.TabStop = false;
             groupBox21.Text = "C형 매트릭스";
             // 
-            // ContentDel3
+            // groupBox1
             // 
-            ContentDel3.Location = new Point(775, 295);
-            ContentDel3.Name = "ContentDel3";
-            ContentDel3.Size = new Size(138, 23);
-            ContentDel3.TabIndex = 269;
-            ContentDel3.Text = "내부치 삭제";
-            ContentDel3.UseVisualStyleBackColor = true;
+            groupBox1.Controls.Add(KeyValPaste3);
+            groupBox1.Controls.Add(KeyValCopy3);
+            groupBox1.Controls.Add(ContentPaste3);
+            groupBox1.Controls.Add(ContentCopy3);
+            groupBox1.Location = new Point(775, 190);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(138, 138);
+            groupBox1.TabIndex = 268;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "복사 / 붙여넣기";
+            // 
+            // KeyValPaste3
+            // 
+            KeyValPaste3.Location = new Point(6, 51);
+            KeyValPaste3.Name = "KeyValPaste3";
+            KeyValPaste3.Size = new Size(126, 23);
+            KeyValPaste3.TabIndex = 276;
+            KeyValPaste3.Text = "Key값 붙여넣기";
+            KeyValPaste3.UseVisualStyleBackColor = true;
+            KeyValPaste3.Click += KeyValPaste3_Click;
+            // 
+            // KeyValCopy3
+            // 
+            KeyValCopy3.Location = new Point(6, 22);
+            KeyValCopy3.Name = "KeyValCopy3";
+            KeyValCopy3.Size = new Size(126, 23);
+            KeyValCopy3.TabIndex = 275;
+            KeyValCopy3.Text = "Key값 복사";
+            KeyValCopy3.UseVisualStyleBackColor = true;
+            KeyValCopy3.Click += KeyValCopy3_Click;
+            // 
+            // ContentPaste3
+            // 
+            ContentPaste3.Location = new Point(6, 109);
+            ContentPaste3.Name = "ContentPaste3";
+            ContentPaste3.Size = new Size(126, 23);
+            ContentPaste3.TabIndex = 274;
+            ContentPaste3.Text = "내부치 붙여넣기";
+            ContentPaste3.UseVisualStyleBackColor = true;
+            ContentPaste3.Click += ContentPaste3_Click;
+            // 
+            // ContentCopy3
+            // 
+            ContentCopy3.Location = new Point(6, 80);
+            ContentCopy3.Name = "ContentCopy3";
+            ContentCopy3.Size = new Size(126, 23);
+            ContentCopy3.TabIndex = 273;
+            ContentCopy3.Text = "내부치 복사";
+            ContentCopy3.UseVisualStyleBackColor = true;
+            ContentCopy3.Click += ContentCopy3_Click;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(RowDel3);
+            groupBox4.Controls.Add(ContentDel3);
+            groupBox4.Controls.Add(KeyValDel3);
+            groupBox4.Location = new Point(775, 334);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(138, 110);
+            groupBox4.TabIndex = 268;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "삭제";
             // 
             // RowDel3
             // 
-            RowDel3.Location = new Point(775, 259);
+            RowDel3.Location = new Point(6, 22);
             RowDel3.Name = "RowDel3";
-            RowDel3.Size = new Size(138, 23);
-            RowDel3.TabIndex = 268;
+            RowDel3.Size = new Size(126, 23);
+            RowDel3.TabIndex = 271;
             RowDel3.Text = "지시부 삭제";
             RowDel3.UseVisualStyleBackColor = true;
+            RowDel3.Click += RowDel3_Click;
+            // 
+            // ContentDel3
+            // 
+            ContentDel3.Location = new Point(6, 80);
+            ContentDel3.Name = "ContentDel3";
+            ContentDel3.Size = new Size(126, 23);
+            ContentDel3.TabIndex = 272;
+            ContentDel3.Text = "내부치 삭제";
+            ContentDel3.UseVisualStyleBackColor = true;
+            ContentDel3.Click += ContentDel3_Click;
+            // 
+            // KeyValDel3
+            // 
+            KeyValDel3.Location = new Point(6, 51);
+            KeyValDel3.Name = "KeyValDel3";
+            KeyValDel3.Size = new Size(126, 23);
+            KeyValDel3.TabIndex = 273;
+            KeyValDel3.Text = "Key값 삭제";
+            KeyValDel3.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(AddSymbol2);
-            groupBox3.Location = new Point(775, 158);
+            groupBox3.Location = new Point(775, 132);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(138, 52);
             groupBox3.TabIndex = 267;
@@ -739,16 +834,6 @@ namespace RNGenerator
             AddSymbol2.TabIndex = 155;
             AddSymbol2.Text = "구분값 추가";
             AddSymbol2.UseVisualStyleBackColor = true;
-            // 
-            // ContentPaste3
-            // 
-            ContentPaste3.Location = new Point(775, 403);
-            ContentPaste3.Name = "ContentPaste3";
-            ContentPaste3.Size = new Size(138, 23);
-            ContentPaste3.TabIndex = 227;
-            ContentPaste3.Text = "내부치 붙여넣기";
-            ContentPaste3.UseVisualStyleBackColor = true;
-            ContentPaste3.Click += ContentPaste3_Click;
             // 
             // MultiValCY1to3
             // 
@@ -884,29 +969,19 @@ namespace RNGenerator
             // 
             // Download3
             // 
-            Download3.Location = new Point(775, 439);
+            Download3.Location = new Point(775, 452);
             Download3.Name = "Download3";
             Download3.Size = new Size(138, 23);
             Download3.TabIndex = 196;
             Download3.Text = "다운로드";
             Download3.UseVisualStyleBackColor = true;
             // 
-            // ContentCopy3
-            // 
-            ContentCopy3.Location = new Point(775, 366);
-            ContentCopy3.Name = "ContentCopy3";
-            ContentCopy3.Size = new Size(138, 23);
-            ContentCopy3.TabIndex = 195;
-            ContentCopy3.Text = "내부치 복사";
-            ContentCopy3.UseVisualStyleBackColor = true;
-            ContentCopy3.Click += ContentCopy3_Click;
-            // 
             // groupBox22
             // 
             groupBox22.Controls.Add(Diagonal3);
             groupBox22.Controls.Add(LR3);
             groupBox22.Controls.Add(UpDown3);
-            groupBox22.Location = new Point(775, 28);
+            groupBox22.Location = new Point(775, 16);
             groupBox22.Name = "groupBox22";
             groupBox22.Size = new Size(138, 110);
             groupBox22.TabIndex = 194;
@@ -1819,7 +1894,7 @@ namespace RNGenerator
             // 
             // groupBox23
             // 
-            groupBox23.Controls.Add(Output3);
+            groupBox23.Controls.Add(Output_C);
             groupBox23.Location = new Point(6, 563);
             groupBox23.Name = "groupBox23";
             groupBox23.Size = new Size(964, 140);
@@ -1827,20 +1902,20 @@ namespace RNGenerator
             groupBox23.TabStop = false;
             groupBox23.Text = "난수값";
             // 
-            // Output3
+            // Output_C
             // 
-            Output3.BackColor = SystemColors.Window;
-            Output3.BorderStyle = BorderStyle.FixedSingle;
-            Output3.Location = new Point(6, 22);
-            Output3.Multiline = true;
-            Output3.Name = "Output3";
-            Output3.ReadOnly = true;
-            Output3.Size = new Size(952, 112);
-            Output3.TabIndex = 10;
+            Output_C.BackColor = SystemColors.Window;
+            Output_C.BorderStyle = BorderStyle.FixedSingle;
+            Output_C.Location = new Point(6, 22);
+            Output_C.Multiline = true;
+            Output_C.Name = "Output_C";
+            Output_C.ReadOnly = true;
+            Output_C.Size = new Size(952, 112);
+            Output_C.TabIndex = 10;
             // 
             // groupBox24
             // 
-            groupBox24.Controls.Add(Input3);
+            groupBox24.Controls.Add(Input_C);
             groupBox24.Location = new Point(6, 497);
             groupBox24.Name = "groupBox24";
             groupBox24.Size = new Size(964, 60);
@@ -1848,14 +1923,14 @@ namespace RNGenerator
             groupBox24.TabStop = false;
             groupBox24.Text = "입력값";
             // 
-            // Input3
+            // Input_C
             // 
-            Input3.BackColor = SystemColors.Window;
-            Input3.ForeColor = SystemColors.WindowText;
-            Input3.Location = new Point(6, 22);
-            Input3.Name = "Input3";
-            Input3.Size = new Size(952, 23);
-            Input3.TabIndex = 9;
+            Input_C.BackColor = SystemColors.Window;
+            Input_C.ForeColor = SystemColors.WindowText;
+            Input_C.Location = new Point(6, 22);
+            Input_C.Name = "Input_C";
+            Input_C.Size = new Size(952, 23);
+            Input_C.TabIndex = 9;
             // 
             // tabPage9
             // 
@@ -1873,10 +1948,9 @@ namespace RNGenerator
             // groupBox17
             // 
             groupBox17.BackColor = SystemColors.Window;
-            groupBox17.Controls.Add(ContentDel2);
-            groupBox17.Controls.Add(RowDel2);
+            groupBox17.Controls.Add(groupBox5);
+            groupBox17.Controls.Add(groupBox6);
             groupBox17.Controls.Add(groupBox2);
-            groupBox17.Controls.Add(ContentPaste2);
             groupBox17.Controls.Add(MultiValBX2to5);
             groupBox17.Controls.Add(MultiValBX2to4);
             groupBox17.Controls.Add(MultiValBX2to3);
@@ -1898,7 +1972,6 @@ namespace RNGenerator
             groupBox17.Controls.Add(MultiValBY2to2);
             groupBox17.Controls.Add(MultiValBY2to1);
             groupBox17.Controls.Add(Download2);
-            groupBox17.Controls.Add(ContentCopy2);
             groupBox17.Controls.Add(groupBox18);
             groupBox17.Controls.Add(label21);
             groupBox17.Controls.Add(MetrixBXKey10);
@@ -2029,28 +2102,104 @@ namespace RNGenerator
             groupBox17.TabStop = false;
             groupBox17.Text = "B형 매트릭스";
             // 
-            // ContentDel2
+            // groupBox5
             // 
-            ContentDel2.Location = new Point(775, 295);
-            ContentDel2.Name = "ContentDel2";
-            ContentDel2.Size = new Size(138, 23);
-            ContentDel2.TabIndex = 269;
-            ContentDel2.Text = "내부치 삭제";
-            ContentDel2.UseVisualStyleBackColor = true;
+            groupBox5.Controls.Add(ContentPaste2);
+            groupBox5.Controls.Add(ContentCopy2);
+            groupBox5.Controls.Add(KeyValPaste2);
+            groupBox5.Controls.Add(KeyValCopy2);
+            groupBox5.Location = new Point(775, 190);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(138, 138);
+            groupBox5.TabIndex = 270;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "복사 / 붙여넣기";
+            // 
+            // ContentPaste2
+            // 
+            ContentPaste2.Location = new Point(6, 109);
+            ContentPaste2.Name = "ContentPaste2";
+            ContentPaste2.Size = new Size(126, 23);
+            ContentPaste2.TabIndex = 278;
+            ContentPaste2.Text = "내부치 붙여넣기";
+            ContentPaste2.UseVisualStyleBackColor = true;
+            ContentPaste2.Click += ContentPaste2_Click;
+            // 
+            // ContentCopy2
+            // 
+            ContentCopy2.Location = new Point(6, 80);
+            ContentCopy2.Name = "ContentCopy2";
+            ContentCopy2.Size = new Size(126, 23);
+            ContentCopy2.TabIndex = 277;
+            ContentCopy2.Text = "내부치 복사";
+            ContentCopy2.UseVisualStyleBackColor = true;
+            ContentCopy2.Click += ContentCopy2_Click;
+            // 
+            // KeyValPaste2
+            // 
+            KeyValPaste2.Location = new Point(6, 51);
+            KeyValPaste2.Name = "KeyValPaste2";
+            KeyValPaste2.Size = new Size(126, 23);
+            KeyValPaste2.TabIndex = 276;
+            KeyValPaste2.Text = "Key값 붙여넣기";
+            KeyValPaste2.UseVisualStyleBackColor = true;
+            KeyValPaste2.Click += KeyValPaste2_Click;
+            // 
+            // KeyValCopy2
+            // 
+            KeyValCopy2.Location = new Point(6, 22);
+            KeyValCopy2.Name = "KeyValCopy2";
+            KeyValCopy2.Size = new Size(126, 23);
+            KeyValCopy2.TabIndex = 275;
+            KeyValCopy2.Text = "Key값 복사";
+            KeyValCopy2.UseVisualStyleBackColor = true;
+            KeyValCopy2.Click += KeyValCopy2_Click;
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(KeyValDel2);
+            groupBox6.Controls.Add(RowDel2);
+            groupBox6.Controls.Add(ContentDel2);
+            groupBox6.Location = new Point(775, 334);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(138, 110);
+            groupBox6.TabIndex = 271;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "삭제";
+            // 
+            // KeyValDel2
+            // 
+            KeyValDel2.Location = new Point(6, 51);
+            KeyValDel2.Name = "KeyValDel2";
+            KeyValDel2.Size = new Size(126, 23);
+            KeyValDel2.TabIndex = 273;
+            KeyValDel2.Text = "Key값 삭제";
+            KeyValDel2.UseVisualStyleBackColor = true;
             // 
             // RowDel2
             // 
-            RowDel2.Location = new Point(775, 259);
+            RowDel2.Location = new Point(6, 22);
             RowDel2.Name = "RowDel2";
-            RowDel2.Size = new Size(138, 23);
+            RowDel2.Size = new Size(126, 23);
             RowDel2.TabIndex = 268;
             RowDel2.Text = "지시부 삭제";
             RowDel2.UseVisualStyleBackColor = true;
+            RowDel2.Click += RowDel2_Click;
+            // 
+            // ContentDel2
+            // 
+            ContentDel2.Location = new Point(6, 80);
+            ContentDel2.Name = "ContentDel2";
+            ContentDel2.Size = new Size(126, 23);
+            ContentDel2.TabIndex = 269;
+            ContentDel2.Text = "내부치 삭제";
+            ContentDel2.UseVisualStyleBackColor = true;
+            ContentDel2.Click += ContentDel2_Click;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(AddSymbol1);
-            groupBox2.Location = new Point(775, 158);
+            groupBox2.Location = new Point(775, 132);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(138, 52);
             groupBox2.TabIndex = 267;
@@ -2065,16 +2214,6 @@ namespace RNGenerator
             AddSymbol1.TabIndex = 155;
             AddSymbol1.Text = "구분값 추가";
             AddSymbol1.UseVisualStyleBackColor = true;
-            // 
-            // ContentPaste2
-            // 
-            ContentPaste2.Location = new Point(775, 403);
-            ContentPaste2.Name = "ContentPaste2";
-            ContentPaste2.Size = new Size(138, 23);
-            ContentPaste2.TabIndex = 223;
-            ContentPaste2.Text = "내부치 붙여넣기";
-            ContentPaste2.UseVisualStyleBackColor = true;
-            ContentPaste2.Click += ContentPaste2_Click;
             // 
             // MultiValBX2to5
             // 
@@ -2298,29 +2437,19 @@ namespace RNGenerator
             // 
             // Download2
             // 
-            Download2.Location = new Point(775, 439);
+            Download2.Location = new Point(775, 452);
             Download2.Name = "Download2";
             Download2.Size = new Size(138, 23);
             Download2.TabIndex = 196;
             Download2.Text = "다운로드";
             Download2.UseVisualStyleBackColor = true;
             // 
-            // ContentCopy2
-            // 
-            ContentCopy2.Location = new Point(775, 366);
-            ContentCopy2.Name = "ContentCopy2";
-            ContentCopy2.Size = new Size(138, 23);
-            ContentCopy2.TabIndex = 195;
-            ContentCopy2.Text = "내부치 복사";
-            ContentCopy2.UseVisualStyleBackColor = true;
-            ContentCopy2.Click += ContentCopy2_Click;
-            // 
             // groupBox18
             // 
             groupBox18.Controls.Add(Diagonal2);
             groupBox18.Controls.Add(LR2);
             groupBox18.Controls.Add(UpDown2);
-            groupBox18.Location = new Point(775, 28);
+            groupBox18.Location = new Point(775, 16);
             groupBox18.Name = "groupBox18";
             groupBox18.Size = new Size(138, 110);
             groupBox18.TabIndex = 194;
@@ -3233,7 +3362,7 @@ namespace RNGenerator
             // 
             // groupBox19
             // 
-            groupBox19.Controls.Add(Output2);
+            groupBox19.Controls.Add(Output_B);
             groupBox19.Location = new Point(6, 563);
             groupBox19.Name = "groupBox19";
             groupBox19.Size = new Size(964, 140);
@@ -3241,20 +3370,20 @@ namespace RNGenerator
             groupBox19.TabStop = false;
             groupBox19.Text = "난수값";
             // 
-            // Output2
+            // Output_B
             // 
-            Output2.BackColor = SystemColors.Window;
-            Output2.BorderStyle = BorderStyle.FixedSingle;
-            Output2.Location = new Point(6, 22);
-            Output2.Multiline = true;
-            Output2.Name = "Output2";
-            Output2.ReadOnly = true;
-            Output2.Size = new Size(952, 112);
-            Output2.TabIndex = 10;
+            Output_B.BackColor = SystemColors.Window;
+            Output_B.BorderStyle = BorderStyle.FixedSingle;
+            Output_B.Location = new Point(6, 22);
+            Output_B.Multiline = true;
+            Output_B.Name = "Output_B";
+            Output_B.ReadOnly = true;
+            Output_B.Size = new Size(952, 112);
+            Output_B.TabIndex = 10;
             // 
             // groupBox20
             // 
-            groupBox20.Controls.Add(Input2);
+            groupBox20.Controls.Add(Input_B);
             groupBox20.Location = new Point(6, 497);
             groupBox20.Name = "groupBox20";
             groupBox20.Size = new Size(964, 60);
@@ -3262,14 +3391,14 @@ namespace RNGenerator
             groupBox20.TabStop = false;
             groupBox20.Text = "입력값";
             // 
-            // Input2
+            // Input_B
             // 
-            Input2.BackColor = SystemColors.Window;
-            Input2.ForeColor = SystemColors.WindowText;
-            Input2.Location = new Point(6, 22);
-            Input2.Name = "Input2";
-            Input2.Size = new Size(952, 23);
-            Input2.TabIndex = 9;
+            Input_B.BackColor = SystemColors.Window;
+            Input_B.ForeColor = SystemColors.WindowText;
+            Input_B.Location = new Point(6, 22);
+            Input_B.Name = "Input_B";
+            Input_B.Size = new Size(952, 23);
+            Input_B.TabIndex = 9;
             // 
             // tabPage8
             // 
@@ -3287,8 +3416,8 @@ namespace RNGenerator
             // groupBox13
             // 
             groupBox13.BackColor = SystemColors.Window;
-            groupBox13.Controls.Add(ContentDel1);
-            groupBox13.Controls.Add(RowDel1);
+            groupBox13.Controls.Add(groupBox7);
+            groupBox13.Controls.Add(groupBox8);
             groupBox13.Controls.Add(MultiValAX1to10);
             groupBox13.Controls.Add(MultiValAX1to9);
             groupBox13.Controls.Add(MultiValAX1to8);
@@ -3329,9 +3458,7 @@ namespace RNGenerator
             groupBox13.Controls.Add(MultiValAY2to3);
             groupBox13.Controls.Add(MultiValAY2to2);
             groupBox13.Controls.Add(MultiValAY2to1);
-            groupBox13.Controls.Add(ContentPaste1);
             groupBox13.Controls.Add(Download1);
-            groupBox13.Controls.Add(ContentCopy1);
             groupBox13.Controls.Add(groupBox14);
             groupBox13.Controls.Add(label5);
             groupBox13.Controls.Add(MetrixAXKey10);
@@ -3462,23 +3589,99 @@ namespace RNGenerator
             groupBox13.TabStop = false;
             groupBox13.Text = "A형 매트릭스";
             // 
-            // ContentDel1
+            // groupBox7
             // 
-            ContentDel1.Location = new Point(775, 295);
-            ContentDel1.Name = "ContentDel1";
-            ContentDel1.Size = new Size(138, 23);
-            ContentDel1.TabIndex = 266;
-            ContentDel1.Text = "내부치 삭제";
-            ContentDel1.UseVisualStyleBackColor = true;
+            groupBox7.Controls.Add(KeyValPaste1);
+            groupBox7.Controls.Add(KeyValCopy1);
+            groupBox7.Controls.Add(ContentCopy1);
+            groupBox7.Controls.Add(ContentPaste1);
+            groupBox7.Location = new Point(775, 151);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(138, 138);
+            groupBox7.TabIndex = 272;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "복사 / 붙여넣기";
+            // 
+            // KeyValPaste1
+            // 
+            KeyValPaste1.Location = new Point(6, 51);
+            KeyValPaste1.Name = "KeyValPaste1";
+            KeyValPaste1.Size = new Size(126, 23);
+            KeyValPaste1.TabIndex = 276;
+            KeyValPaste1.Text = "Key값 붙여넣기";
+            KeyValPaste1.UseVisualStyleBackColor = true;
+            KeyValPaste1.Click += KeyValPaste1_Click;
+            // 
+            // KeyValCopy1
+            // 
+            KeyValCopy1.Location = new Point(6, 22);
+            KeyValCopy1.Name = "KeyValCopy1";
+            KeyValCopy1.Size = new Size(126, 23);
+            KeyValCopy1.TabIndex = 275;
+            KeyValCopy1.Text = "Key값 복사";
+            KeyValCopy1.UseVisualStyleBackColor = true;
+            KeyValCopy1.Click += KeyValCopy1_Click;
+            // 
+            // ContentCopy1
+            // 
+            ContentCopy1.Location = new Point(6, 80);
+            ContentCopy1.Name = "ContentCopy1";
+            ContentCopy1.Size = new Size(126, 23);
+            ContentCopy1.TabIndex = 195;
+            ContentCopy1.Text = "내부치 복사";
+            ContentCopy1.UseVisualStyleBackColor = true;
+            ContentCopy1.Click += ContentCopy1_Click;
+            // 
+            // ContentPaste1
+            // 
+            ContentPaste1.Location = new Point(6, 109);
+            ContentPaste1.Name = "ContentPaste1";
+            ContentPaste1.Size = new Size(126, 23);
+            ContentPaste1.TabIndex = 223;
+            ContentPaste1.Text = "내부치 붙여넣기";
+            ContentPaste1.UseVisualStyleBackColor = true;
+            ContentPaste1.Click += ContentPaste1_Click;
+            // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(KeyValDel1);
+            groupBox8.Controls.Add(RowDel1);
+            groupBox8.Controls.Add(ContentDel1);
+            groupBox8.Location = new Point(775, 316);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new Size(138, 110);
+            groupBox8.TabIndex = 273;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "삭제";
+            // 
+            // KeyValDel1
+            // 
+            KeyValDel1.Location = new Point(6, 51);
+            KeyValDel1.Name = "KeyValDel1";
+            KeyValDel1.Size = new Size(126, 23);
+            KeyValDel1.TabIndex = 273;
+            KeyValDel1.Text = "Key값 삭제";
+            KeyValDel1.UseVisualStyleBackColor = true;
             // 
             // RowDel1
             // 
-            RowDel1.Location = new Point(775, 259);
+            RowDel1.Location = new Point(6, 22);
             RowDel1.Name = "RowDel1";
-            RowDel1.Size = new Size(138, 23);
+            RowDel1.Size = new Size(126, 23);
             RowDel1.TabIndex = 265;
             RowDel1.Text = "지시부 삭제";
             RowDel1.UseVisualStyleBackColor = true;
+            RowDel1.Click += RowDel1_Click;
+            // 
+            // ContentDel1
+            // 
+            ContentDel1.Location = new Point(6, 80);
+            ContentDel1.Name = "ContentDel1";
+            ContentDel1.Size = new Size(126, 23);
+            ContentDel1.TabIndex = 266;
+            ContentDel1.Text = "내부치 삭제";
+            ContentDel1.UseVisualStyleBackColor = true;
+            ContentDel1.Click += ContentDel1_Click;
             // 
             // MultiValAX1to10
             // 
@@ -3800,41 +4003,21 @@ namespace RNGenerator
             MultiValAY2to1.TabIndex = 224;
             MultiValAY2to1.TextAlign = HorizontalAlignment.Center;
             // 
-            // ContentPaste1
-            // 
-            ContentPaste1.Location = new Point(775, 403);
-            ContentPaste1.Name = "ContentPaste1";
-            ContentPaste1.Size = new Size(138, 23);
-            ContentPaste1.TabIndex = 223;
-            ContentPaste1.Text = "내부치 붙여넣기";
-            ContentPaste1.UseVisualStyleBackColor = true;
-            ContentPaste1.Click += ContentPaste1_Click;
-            // 
             // Download1
             // 
-            Download1.Location = new Point(775, 439);
+            Download1.Location = new Point(775, 452);
             Download1.Name = "Download1";
             Download1.Size = new Size(138, 23);
             Download1.TabIndex = 196;
             Download1.Text = "다운로드";
             Download1.UseVisualStyleBackColor = true;
             // 
-            // ContentCopy1
-            // 
-            ContentCopy1.Location = new Point(775, 366);
-            ContentCopy1.Name = "ContentCopy1";
-            ContentCopy1.Size = new Size(138, 23);
-            ContentCopy1.TabIndex = 195;
-            ContentCopy1.Text = "내부치 복사";
-            ContentCopy1.UseVisualStyleBackColor = true;
-            ContentCopy1.Click += ContentCopy1_Click;
-            // 
             // groupBox14
             // 
             groupBox14.Controls.Add(Diagonal1);
             groupBox14.Controls.Add(LR1);
             groupBox14.Controls.Add(UpDown1);
-            groupBox14.Location = new Point(775, 28);
+            groupBox14.Location = new Point(775, 20);
             groupBox14.Name = "groupBox14";
             groupBox14.Size = new Size(138, 110);
             groupBox14.TabIndex = 194;
@@ -3883,6 +4066,7 @@ namespace RNGenerator
             MetrixAXKey10.Name = "MetrixAXKey10";
             MetrixAXKey10.Size = new Size(42, 23);
             MetrixAXKey10.TabIndex = 151;
+            MetrixAXKey10.Text = "0";
             MetrixAXKey10.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey9
@@ -3891,6 +4075,7 @@ namespace RNGenerator
             MetrixAXKey9.Name = "MetrixAXKey9";
             MetrixAXKey9.Size = new Size(42, 23);
             MetrixAXKey9.TabIndex = 150;
+            MetrixAXKey9.Text = "9";
             MetrixAXKey9.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey8
@@ -3899,6 +4084,7 @@ namespace RNGenerator
             MetrixAXKey8.Name = "MetrixAXKey8";
             MetrixAXKey8.Size = new Size(42, 23);
             MetrixAXKey8.TabIndex = 149;
+            MetrixAXKey8.Text = "8";
             MetrixAXKey8.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey7
@@ -3907,6 +4093,7 @@ namespace RNGenerator
             MetrixAXKey7.Name = "MetrixAXKey7";
             MetrixAXKey7.Size = new Size(42, 23);
             MetrixAXKey7.TabIndex = 148;
+            MetrixAXKey7.Text = "7";
             MetrixAXKey7.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey6
@@ -3915,6 +4102,7 @@ namespace RNGenerator
             MetrixAXKey6.Name = "MetrixAXKey6";
             MetrixAXKey6.Size = new Size(42, 23);
             MetrixAXKey6.TabIndex = 147;
+            MetrixAXKey6.Text = "6";
             MetrixAXKey6.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey5
@@ -3923,6 +4111,7 @@ namespace RNGenerator
             MetrixAXKey5.Name = "MetrixAXKey5";
             MetrixAXKey5.Size = new Size(42, 23);
             MetrixAXKey5.TabIndex = 146;
+            MetrixAXKey5.Text = "5";
             MetrixAXKey5.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey4
@@ -3931,6 +4120,7 @@ namespace RNGenerator
             MetrixAXKey4.Name = "MetrixAXKey4";
             MetrixAXKey4.Size = new Size(42, 23);
             MetrixAXKey4.TabIndex = 145;
+            MetrixAXKey4.Text = "4";
             MetrixAXKey4.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey3
@@ -3939,6 +4129,7 @@ namespace RNGenerator
             MetrixAXKey3.Name = "MetrixAXKey3";
             MetrixAXKey3.Size = new Size(42, 23);
             MetrixAXKey3.TabIndex = 144;
+            MetrixAXKey3.Text = "3";
             MetrixAXKey3.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey2
@@ -3947,6 +4138,7 @@ namespace RNGenerator
             MetrixAXKey2.Name = "MetrixAXKey2";
             MetrixAXKey2.Size = new Size(42, 23);
             MetrixAXKey2.TabIndex = 143;
+            MetrixAXKey2.Text = "2";
             MetrixAXKey2.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAXKey1
@@ -3955,6 +4147,7 @@ namespace RNGenerator
             MetrixAXKey1.Name = "MetrixAXKey1";
             MetrixAXKey1.Size = new Size(42, 23);
             MetrixAXKey1.TabIndex = 142;
+            MetrixAXKey1.Text = "1";
             MetrixAXKey1.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey9
@@ -3963,6 +4156,7 @@ namespace RNGenerator
             MetrixAYKey9.Name = "MetrixAYKey9";
             MetrixAYKey9.Size = new Size(42, 23);
             MetrixAYKey9.TabIndex = 141;
+            MetrixAYKey9.Text = "9";
             MetrixAYKey9.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey8
@@ -3971,6 +4165,7 @@ namespace RNGenerator
             MetrixAYKey8.Name = "MetrixAYKey8";
             MetrixAYKey8.Size = new Size(42, 23);
             MetrixAYKey8.TabIndex = 140;
+            MetrixAYKey8.Text = "8";
             MetrixAYKey8.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey7
@@ -3979,6 +4174,7 @@ namespace RNGenerator
             MetrixAYKey7.Name = "MetrixAYKey7";
             MetrixAYKey7.Size = new Size(42, 23);
             MetrixAYKey7.TabIndex = 139;
+            MetrixAYKey7.Text = "7";
             MetrixAYKey7.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey6
@@ -3987,6 +4183,7 @@ namespace RNGenerator
             MetrixAYKey6.Name = "MetrixAYKey6";
             MetrixAYKey6.Size = new Size(42, 23);
             MetrixAYKey6.TabIndex = 138;
+            MetrixAYKey6.Text = "6";
             MetrixAYKey6.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey10
@@ -3995,6 +4192,7 @@ namespace RNGenerator
             MetrixAYKey10.Name = "MetrixAYKey10";
             MetrixAYKey10.Size = new Size(42, 23);
             MetrixAYKey10.TabIndex = 137;
+            MetrixAYKey10.Text = "0";
             MetrixAYKey10.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey5
@@ -4003,6 +4201,7 @@ namespace RNGenerator
             MetrixAYKey5.Name = "MetrixAYKey5";
             MetrixAYKey5.Size = new Size(42, 23);
             MetrixAYKey5.TabIndex = 136;
+            MetrixAYKey5.Text = "5";
             MetrixAYKey5.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey4
@@ -4011,6 +4210,7 @@ namespace RNGenerator
             MetrixAYKey4.Name = "MetrixAYKey4";
             MetrixAYKey4.Size = new Size(42, 23);
             MetrixAYKey4.TabIndex = 135;
+            MetrixAYKey4.Text = "4";
             MetrixAYKey4.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey3
@@ -4019,6 +4219,7 @@ namespace RNGenerator
             MetrixAYKey3.Name = "MetrixAYKey3";
             MetrixAYKey3.Size = new Size(42, 23);
             MetrixAYKey3.TabIndex = 134;
+            MetrixAYKey3.Text = "3";
             MetrixAYKey3.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey2
@@ -4027,6 +4228,7 @@ namespace RNGenerator
             MetrixAYKey2.Name = "MetrixAYKey2";
             MetrixAYKey2.Size = new Size(42, 23);
             MetrixAYKey2.TabIndex = 133;
+            MetrixAYKey2.Text = "2";
             MetrixAYKey2.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixAYKey1
@@ -4035,6 +4237,7 @@ namespace RNGenerator
             MetrixAYKey1.Name = "MetrixAYKey1";
             MetrixAYKey1.Size = new Size(42, 23);
             MetrixAYKey1.TabIndex = 132;
+            MetrixAYKey1.Text = "1";
             MetrixAYKey1.TextAlign = HorizontalAlignment.Center;
             // 
             // MetrixA10to1
@@ -4113,6 +4316,7 @@ namespace RNGenerator
             MetrixA1to1.Name = "MetrixA1to1";
             MetrixA1to1.Size = new Size(42, 23);
             MetrixA1to1.TabIndex = 120;
+            MetrixA1to1.Text = "안";
             // 
             // MetrixA1to2
             // 
@@ -4491,6 +4695,7 @@ namespace RNGenerator
             MetrixA5to5.Name = "MetrixA5to5";
             MetrixA5to5.Size = new Size(42, 23);
             MetrixA5to5.TabIndex = 66;
+            MetrixA5to5.Text = "요";
             // 
             // MetrixA5to6
             // 
@@ -4554,6 +4759,7 @@ namespace RNGenerator
             MetrixA4to4.Name = "MetrixA4to4";
             MetrixA4to4.Size = new Size(42, 23);
             MetrixA4to4.TabIndex = 57;
+            MetrixA4to4.Text = "세";
             // 
             // MetrixA4to5
             // 
@@ -4617,6 +4823,7 @@ namespace RNGenerator
             MetrixA3to3.Name = "MetrixA3to3";
             MetrixA3to3.Size = new Size(42, 23);
             MetrixA3to3.TabIndex = 48;
+            MetrixA3to3.Text = "하";
             // 
             // MetrixA3to4
             // 
@@ -4680,6 +4887,7 @@ namespace RNGenerator
             MetrixA2to2.Name = "MetrixA2to2";
             MetrixA2to2.Size = new Size(42, 23);
             MetrixA2to2.TabIndex = 14;
+            MetrixA2to2.Text = "녕";
             // 
             // MetrixA2to3
             // 
@@ -4747,7 +4955,7 @@ namespace RNGenerator
             // 
             // groupBox15
             // 
-            groupBox15.Controls.Add(Output1);
+            groupBox15.Controls.Add(Output_A);
             groupBox15.Location = new Point(6, 563);
             groupBox15.Name = "groupBox15";
             groupBox15.Size = new Size(964, 140);
@@ -4755,20 +4963,20 @@ namespace RNGenerator
             groupBox15.TabStop = false;
             groupBox15.Text = "난수값";
             // 
-            // Output1
+            // Output_A
             // 
-            Output1.BackColor = SystemColors.Window;
-            Output1.BorderStyle = BorderStyle.FixedSingle;
-            Output1.Location = new Point(6, 22);
-            Output1.Multiline = true;
-            Output1.Name = "Output1";
-            Output1.ReadOnly = true;
-            Output1.Size = new Size(952, 112);
-            Output1.TabIndex = 10;
+            Output_A.BackColor = SystemColors.Window;
+            Output_A.BorderStyle = BorderStyle.FixedSingle;
+            Output_A.Location = new Point(6, 22);
+            Output_A.Multiline = true;
+            Output_A.Name = "Output_A";
+            Output_A.ReadOnly = true;
+            Output_A.Size = new Size(952, 112);
+            Output_A.TabIndex = 10;
             // 
             // groupBox16
             // 
-            groupBox16.Controls.Add(Input1);
+            groupBox16.Controls.Add(Input_A);
             groupBox16.Location = new Point(6, 497);
             groupBox16.Name = "groupBox16";
             groupBox16.Size = new Size(964, 60);
@@ -4776,14 +4984,14 @@ namespace RNGenerator
             groupBox16.TabStop = false;
             groupBox16.Text = "입력값";
             // 
-            // Input1
+            // Input_A
             // 
-            Input1.BackColor = SystemColors.Window;
-            Input1.ForeColor = SystemColors.WindowText;
-            Input1.Location = new Point(6, 22);
-            Input1.Name = "Input1";
-            Input1.Size = new Size(952, 23);
-            Input1.TabIndex = 9;
+            Input_A.BackColor = SystemColors.Window;
+            Input_A.ForeColor = SystemColors.WindowText;
+            Input_A.Location = new Point(6, 22);
+            Input_A.Name = "Input_A";
+            Input_A.Size = new Size(952, 23);
+            Input_A.TabIndex = 9;
             // 
             // tabControl1
             // 
@@ -4807,6 +5015,8 @@ namespace RNGenerator
             tabPage10.ResumeLayout(false);
             groupBox21.ResumeLayout(false);
             groupBox21.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox22.ResumeLayout(false);
             groupBox23.ResumeLayout(false);
@@ -4816,6 +5026,8 @@ namespace RNGenerator
             tabPage9.ResumeLayout(false);
             groupBox17.ResumeLayout(false);
             groupBox17.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox18.ResumeLayout(false);
             groupBox19.ResumeLayout(false);
@@ -4825,6 +5037,8 @@ namespace RNGenerator
             tabPage8.ResumeLayout(false);
             groupBox13.ResumeLayout(false);
             groupBox13.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox8.ResumeLayout(false);
             groupBox14.ResumeLayout(false);
             groupBox15.ResumeLayout(false);
             groupBox15.PerformLayout();
@@ -4837,7 +5051,6 @@ namespace RNGenerator
         #endregion
         private TabPage tabPage10;
         private GroupBox groupBox21;
-        private Button ContentPaste3;
         private TextBox MultiValCY1to3;
         private TextBox MultiValCY1to2;
         private TextBox MultiValCX2to3;
@@ -4851,7 +5064,6 @@ namespace RNGenerator
         private TextBox MultiValCY2to2;
         private TextBox MultiValCY2to1;
         private Button Download3;
-        private Button ContentCopy3;
         private GroupBox groupBox22;
         private Button Diagonal3;
         private Button LR3;
@@ -4979,12 +5191,11 @@ namespace RNGenerator
         private TextBox MetrixC2to10;
         private Label label27;
         private GroupBox groupBox23;
-        private TextBox Output3;
+        private TextBox Output_C;
         private GroupBox groupBox24;
-        private TextBox Input3;
+        private TextBox Input_C;
         private TabPage tabPage9;
         private GroupBox groupBox17;
-        private Button ContentPaste2;
         private TextBox MultiValBX2to5;
         private TextBox MultiValBX2to4;
         private TextBox MultiValBX2to3;
@@ -5006,7 +5217,6 @@ namespace RNGenerator
         private TextBox MultiValBY2to2;
         private TextBox MultiValBY2to1;
         private Button Download2;
-        private Button ContentCopy2;
         private GroupBox groupBox18;
         private Button Diagonal2;
         private Button LR2;
@@ -5134,9 +5344,9 @@ namespace RNGenerator
         private TextBox MetrixB2to10;
         private Label label22;
         private GroupBox groupBox19;
-        private TextBox Output2;
+        private TextBox Output_B;
         private GroupBox groupBox20;
-        private TextBox Input2;
+        private TextBox Input_B;
         private TabPage tabPage8;
         private GroupBox groupBox13;
         private TextBox MultiValAX1to10;
@@ -5308,14 +5518,12 @@ namespace RNGenerator
         private TextBox MetrixA2to10;
         private Label label6;
         private GroupBox groupBox15;
-        private TextBox Output1;
+        private TextBox Output_A;
         private GroupBox groupBox16;
-        private TextBox Input1;
+        private TextBox Input_A;
         private TabControl tabControl1;
         private Button ContentDel1;
         private Button RowDel1;
-        private Button ContentDel3;
-        private Button RowDel3;
         private GroupBox groupBox3;
         private Button AddSymbol2;
         private Button ContentDel2;
@@ -5323,5 +5531,26 @@ namespace RNGenerator
         private GroupBox groupBox2;
         private Button AddSymbol1;
         private TextBox MetrixA1to1;
+        private GroupBox groupBox1;
+        private GroupBox groupBox4;
+        private Button RowDel3;
+        private Button ContentDel3;
+        private Button KeyValDel3;
+        private Button KeyValPaste3;
+        private Button KeyValCopy3;
+        private Button ContentPaste3;
+        private Button ContentCopy3;
+        private GroupBox groupBox5;
+        private Button ContentPaste2;
+        private Button ContentCopy2;
+        private Button KeyValPaste2;
+        private Button KeyValCopy2;
+        private GroupBox groupBox6;
+        private Button KeyValDel2;
+        private GroupBox groupBox7;
+        private Button KeyValPaste1;
+        private Button KeyValCopy1;
+        private GroupBox groupBox8;
+        private Button KeyValDel1;
     }
 }
