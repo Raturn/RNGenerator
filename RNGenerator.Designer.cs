@@ -815,6 +815,7 @@ namespace RNGenerator
             KeyValDel3.TabIndex = 273;
             KeyValDel3.Text = "Key값 삭제";
             KeyValDel3.UseVisualStyleBackColor = true;
+            KeyValDel3.Click += KeyValDel3_Click;
             // 
             // groupBox3
             // 
@@ -2175,6 +2176,7 @@ namespace RNGenerator
             KeyValDel2.TabIndex = 273;
             KeyValDel2.Text = "Key값 삭제";
             KeyValDel2.UseVisualStyleBackColor = true;
+            KeyValDel2.Click += KeyValDel2_Click;
             // 
             // RowDel2
             // 
@@ -3662,6 +3664,7 @@ namespace RNGenerator
             KeyValDel1.TabIndex = 273;
             KeyValDel1.Text = "Key값 삭제";
             KeyValDel1.UseVisualStyleBackColor = true;
+            KeyValDel1.Click += KeyValDel1_Click;
             // 
             // RowDel1
             // 
@@ -4316,7 +4319,7 @@ namespace RNGenerator
             MetrixA1to1.Name = "MetrixA1to1";
             MetrixA1to1.Size = new Size(42, 23);
             MetrixA1to1.TabIndex = 120;
-            MetrixA1to1.Text = "안";
+            MetrixA1to1.Text = "ㄱ";
             // 
             // MetrixA1to2
             // 
@@ -4324,6 +4327,7 @@ namespace RNGenerator
             MetrixA1to2.Name = "MetrixA1to2";
             MetrixA1to2.Size = new Size(42, 23);
             MetrixA1to2.TabIndex = 119;
+            MetrixA1to2.Text = "ㄴ";
             // 
             // MetrixA1to3
             // 
@@ -4331,6 +4335,7 @@ namespace RNGenerator
             MetrixA1to3.Name = "MetrixA1to3";
             MetrixA1to3.Size = new Size(42, 23);
             MetrixA1to3.TabIndex = 118;
+            MetrixA1to3.Text = "ㄷ";
             // 
             // MetrixA1to4
             // 
@@ -4338,6 +4343,7 @@ namespace RNGenerator
             MetrixA1to4.Name = "MetrixA1to4";
             MetrixA1to4.Size = new Size(42, 23);
             MetrixA1to4.TabIndex = 117;
+            MetrixA1to4.Text = "ㄹ";
             // 
             // MetrixA1to5
             // 
@@ -4345,6 +4351,7 @@ namespace RNGenerator
             MetrixA1to5.Name = "MetrixA1to5";
             MetrixA1to5.Size = new Size(42, 23);
             MetrixA1to5.TabIndex = 116;
+            MetrixA1to5.Text = "ㅁ";
             // 
             // MetrixA1to6
             // 
@@ -4352,6 +4359,7 @@ namespace RNGenerator
             MetrixA1to6.Name = "MetrixA1to6";
             MetrixA1to6.Size = new Size(42, 23);
             MetrixA1to6.TabIndex = 115;
+            MetrixA1to6.Text = "ㅂ";
             // 
             // MetrixA1to7
             // 
@@ -4359,6 +4367,7 @@ namespace RNGenerator
             MetrixA1to7.Name = "MetrixA1to7";
             MetrixA1to7.Size = new Size(42, 23);
             MetrixA1to7.TabIndex = 114;
+            MetrixA1to7.Text = "ㅅ";
             // 
             // MetrixA1to8
             // 
@@ -4366,6 +4375,7 @@ namespace RNGenerator
             MetrixA1to8.Name = "MetrixA1to8";
             MetrixA1to8.Size = new Size(42, 23);
             MetrixA1to8.TabIndex = 113;
+            MetrixA1to8.Text = "ㅇ";
             // 
             // MetrixA1to9
             // 
@@ -4373,6 +4383,7 @@ namespace RNGenerator
             MetrixA1to9.Name = "MetrixA1to9";
             MetrixA1to9.Size = new Size(42, 23);
             MetrixA1to9.TabIndex = 112;
+            MetrixA1to9.Text = "ㅈ";
             // 
             // MetrixA1to10
             // 
@@ -4380,6 +4391,7 @@ namespace RNGenerator
             MetrixA1to10.Name = "MetrixA1to10";
             MetrixA1to10.Size = new Size(42, 23);
             MetrixA1to10.TabIndex = 111;
+            MetrixA1to10.Text = "ㅊ";
             // 
             // MetrixA9to1
             // 
@@ -4597,6 +4609,7 @@ namespace RNGenerator
             MetrixA6to1.Name = "MetrixA6to1";
             MetrixA6to1.Size = new Size(42, 23);
             MetrixA6to1.TabIndex = 80;
+            MetrixA6to1.Text = "1";
             // 
             // MetrixA6to2
             // 
@@ -4604,6 +4617,7 @@ namespace RNGenerator
             MetrixA6to2.Name = "MetrixA6to2";
             MetrixA6to2.Size = new Size(42, 23);
             MetrixA6to2.TabIndex = 79;
+            MetrixA6to2.Text = "2";
             // 
             // MetrixA6to3
             // 
@@ -4611,6 +4625,7 @@ namespace RNGenerator
             MetrixA6to3.Name = "MetrixA6to3";
             MetrixA6to3.Size = new Size(42, 23);
             MetrixA6to3.TabIndex = 78;
+            MetrixA6to3.Text = "3";
             // 
             // MetrixA6to4
             // 
@@ -4618,6 +4633,7 @@ namespace RNGenerator
             MetrixA6to4.Name = "MetrixA6to4";
             MetrixA6to4.Size = new Size(42, 23);
             MetrixA6to4.TabIndex = 77;
+            MetrixA6to4.Text = "4";
             // 
             // MetrixA6to5
             // 
@@ -4625,6 +4641,7 @@ namespace RNGenerator
             MetrixA6to5.Name = "MetrixA6to5";
             MetrixA6to5.Size = new Size(42, 23);
             MetrixA6to5.TabIndex = 76;
+            MetrixA6to5.Text = "5";
             // 
             // MetrixA6to6
             // 
@@ -4632,6 +4649,7 @@ namespace RNGenerator
             MetrixA6to6.Name = "MetrixA6to6";
             MetrixA6to6.Size = new Size(42, 23);
             MetrixA6to6.TabIndex = 75;
+            MetrixA6to6.Text = "6";
             // 
             // MetrixA6to7
             // 
@@ -4639,6 +4657,7 @@ namespace RNGenerator
             MetrixA6to7.Name = "MetrixA6to7";
             MetrixA6to7.Size = new Size(42, 23);
             MetrixA6to7.TabIndex = 74;
+            MetrixA6to7.Text = "7";
             // 
             // MetrixA6to8
             // 
@@ -4646,6 +4665,7 @@ namespace RNGenerator
             MetrixA6to8.Name = "MetrixA6to8";
             MetrixA6to8.Size = new Size(42, 23);
             MetrixA6to8.TabIndex = 73;
+            MetrixA6to8.Text = "8";
             // 
             // MetrixA6to9
             // 
@@ -4653,6 +4673,7 @@ namespace RNGenerator
             MetrixA6to9.Name = "MetrixA6to9";
             MetrixA6to9.Size = new Size(42, 23);
             MetrixA6to9.TabIndex = 72;
+            MetrixA6to9.Text = "9";
             // 
             // MetrixA6to10
             // 
@@ -4660,6 +4681,7 @@ namespace RNGenerator
             MetrixA6to10.Name = "MetrixA6to10";
             MetrixA6to10.Size = new Size(42, 23);
             MetrixA6to10.TabIndex = 71;
+            MetrixA6to10.Text = "0";
             // 
             // MetrixA5to1
             // 
@@ -4667,6 +4689,7 @@ namespace RNGenerator
             MetrixA5to1.Name = "MetrixA5to1";
             MetrixA5to1.Size = new Size(42, 23);
             MetrixA5to1.TabIndex = 70;
+            MetrixA5to1.Text = "ㅣ";
             // 
             // MetrixA5to2
             // 
@@ -4695,7 +4718,6 @@ namespace RNGenerator
             MetrixA5to5.Name = "MetrixA5to5";
             MetrixA5to5.Size = new Size(42, 23);
             MetrixA5to5.TabIndex = 66;
-            MetrixA5to5.Text = "요";
             // 
             // MetrixA5to6
             // 
@@ -4738,6 +4760,7 @@ namespace RNGenerator
             MetrixA4to1.Name = "MetrixA4to1";
             MetrixA4to1.Size = new Size(42, 23);
             MetrixA4to1.TabIndex = 60;
+            MetrixA4to1.Text = "ㅙ";
             // 
             // MetrixA4to2
             // 
@@ -4745,6 +4768,7 @@ namespace RNGenerator
             MetrixA4to2.Name = "MetrixA4to2";
             MetrixA4to2.Size = new Size(42, 23);
             MetrixA4to2.TabIndex = 59;
+            MetrixA4to2.Text = "ㅚ";
             // 
             // MetrixA4to3
             // 
@@ -4752,6 +4776,7 @@ namespace RNGenerator
             MetrixA4to3.Name = "MetrixA4to3";
             MetrixA4to3.Size = new Size(42, 23);
             MetrixA4to3.TabIndex = 58;
+            MetrixA4to3.Text = "ㅛ";
             // 
             // MetrixA4to4
             // 
@@ -4759,7 +4784,7 @@ namespace RNGenerator
             MetrixA4to4.Name = "MetrixA4to4";
             MetrixA4to4.Size = new Size(42, 23);
             MetrixA4to4.TabIndex = 57;
-            MetrixA4to4.Text = "세";
+            MetrixA4to4.Text = "ㅜ";
             // 
             // MetrixA4to5
             // 
@@ -4767,6 +4792,7 @@ namespace RNGenerator
             MetrixA4to5.Name = "MetrixA4to5";
             MetrixA4to5.Size = new Size(42, 23);
             MetrixA4to5.TabIndex = 56;
+            MetrixA4to5.Text = "ㅝ";
             // 
             // MetrixA4to6
             // 
@@ -4774,6 +4800,7 @@ namespace RNGenerator
             MetrixA4to6.Name = "MetrixA4to6";
             MetrixA4to6.Size = new Size(42, 23);
             MetrixA4to6.TabIndex = 55;
+            MetrixA4to6.Text = "ㅞ";
             // 
             // MetrixA4to7
             // 
@@ -4781,6 +4808,7 @@ namespace RNGenerator
             MetrixA4to7.Name = "MetrixA4to7";
             MetrixA4to7.Size = new Size(42, 23);
             MetrixA4to7.TabIndex = 54;
+            MetrixA4to7.Text = "ㅟ";
             // 
             // MetrixA4to8
             // 
@@ -4788,6 +4816,7 @@ namespace RNGenerator
             MetrixA4to8.Name = "MetrixA4to8";
             MetrixA4to8.Size = new Size(42, 23);
             MetrixA4to8.TabIndex = 53;
+            MetrixA4to8.Text = "ㅠ";
             // 
             // MetrixA4to9
             // 
@@ -4795,6 +4824,7 @@ namespace RNGenerator
             MetrixA4to9.Name = "MetrixA4to9";
             MetrixA4to9.Size = new Size(42, 23);
             MetrixA4to9.TabIndex = 52;
+            MetrixA4to9.Text = "ㅡ";
             // 
             // MetrixA4to10
             // 
@@ -4802,6 +4832,7 @@ namespace RNGenerator
             MetrixA4to10.Name = "MetrixA4to10";
             MetrixA4to10.Size = new Size(42, 23);
             MetrixA4to10.TabIndex = 51;
+            MetrixA4to10.Text = "ㅢ";
             // 
             // MetrixA3to1
             // 
@@ -4809,6 +4840,7 @@ namespace RNGenerator
             MetrixA3to1.Name = "MetrixA3to1";
             MetrixA3to1.Size = new Size(42, 23);
             MetrixA3to1.TabIndex = 50;
+            MetrixA3to1.Text = "ㅏ";
             // 
             // MetrixA3to2
             // 
@@ -4816,6 +4848,7 @@ namespace RNGenerator
             MetrixA3to2.Name = "MetrixA3to2";
             MetrixA3to2.Size = new Size(42, 23);
             MetrixA3to2.TabIndex = 49;
+            MetrixA3to2.Text = "ㅐ";
             // 
             // MetrixA3to3
             // 
@@ -4823,7 +4856,7 @@ namespace RNGenerator
             MetrixA3to3.Name = "MetrixA3to3";
             MetrixA3to3.Size = new Size(42, 23);
             MetrixA3to3.TabIndex = 48;
-            MetrixA3to3.Text = "하";
+            MetrixA3to3.Text = "ㅑ";
             // 
             // MetrixA3to4
             // 
@@ -4831,6 +4864,7 @@ namespace RNGenerator
             MetrixA3to4.Name = "MetrixA3to4";
             MetrixA3to4.Size = new Size(42, 23);
             MetrixA3to4.TabIndex = 47;
+            MetrixA3to4.Text = "ㅒ";
             // 
             // MetrixA3to5
             // 
@@ -4838,6 +4872,7 @@ namespace RNGenerator
             MetrixA3to5.Name = "MetrixA3to5";
             MetrixA3to5.Size = new Size(42, 23);
             MetrixA3to5.TabIndex = 46;
+            MetrixA3to5.Text = "ㅓ";
             // 
             // MetrixA3to6
             // 
@@ -4845,6 +4880,7 @@ namespace RNGenerator
             MetrixA3to6.Name = "MetrixA3to6";
             MetrixA3to6.Size = new Size(42, 23);
             MetrixA3to6.TabIndex = 45;
+            MetrixA3to6.Text = "ㅔ";
             // 
             // MetrixA3to7
             // 
@@ -4852,6 +4888,7 @@ namespace RNGenerator
             MetrixA3to7.Name = "MetrixA3to7";
             MetrixA3to7.Size = new Size(42, 23);
             MetrixA3to7.TabIndex = 44;
+            MetrixA3to7.Text = "ㅕ";
             // 
             // MetrixA3to8
             // 
@@ -4859,6 +4896,7 @@ namespace RNGenerator
             MetrixA3to8.Name = "MetrixA3to8";
             MetrixA3to8.Size = new Size(42, 23);
             MetrixA3to8.TabIndex = 43;
+            MetrixA3to8.Text = "ㅖ";
             // 
             // MetrixA3to9
             // 
@@ -4866,6 +4904,7 @@ namespace RNGenerator
             MetrixA3to9.Name = "MetrixA3to9";
             MetrixA3to9.Size = new Size(42, 23);
             MetrixA3to9.TabIndex = 42;
+            MetrixA3to9.Text = "ㅗ";
             // 
             // MetrixA3to10
             // 
@@ -4873,6 +4912,7 @@ namespace RNGenerator
             MetrixA3to10.Name = "MetrixA3to10";
             MetrixA3to10.Size = new Size(42, 23);
             MetrixA3to10.TabIndex = 41;
+            MetrixA3to10.Text = "ㅘ";
             // 
             // MetrixA2to1
             // 
@@ -4880,6 +4920,7 @@ namespace RNGenerator
             MetrixA2to1.Name = "MetrixA2to1";
             MetrixA2to1.Size = new Size(42, 23);
             MetrixA2to1.TabIndex = 15;
+            MetrixA2to1.Text = "ㅋ";
             // 
             // MetrixA2to2
             // 
@@ -4887,7 +4928,7 @@ namespace RNGenerator
             MetrixA2to2.Name = "MetrixA2to2";
             MetrixA2to2.Size = new Size(42, 23);
             MetrixA2to2.TabIndex = 14;
-            MetrixA2to2.Text = "녕";
+            MetrixA2to2.Text = "ㅌ";
             // 
             // MetrixA2to3
             // 
@@ -4895,6 +4936,7 @@ namespace RNGenerator
             MetrixA2to3.Name = "MetrixA2to3";
             MetrixA2to3.Size = new Size(42, 23);
             MetrixA2to3.TabIndex = 13;
+            MetrixA2to3.Text = "ㅍ";
             // 
             // MetrixA2to4
             // 
@@ -4902,6 +4944,7 @@ namespace RNGenerator
             MetrixA2to4.Name = "MetrixA2to4";
             MetrixA2to4.Size = new Size(42, 23);
             MetrixA2to4.TabIndex = 12;
+            MetrixA2to4.Text = "ㅎ";
             // 
             // MetrixA2to5
             // 

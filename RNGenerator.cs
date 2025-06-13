@@ -42,9 +42,89 @@ namespace RNGenerator
         //---------------------------------------------------------------------------
 
 
+        //------------------------------- 자모음 분리 -------------------------------
+        public static string SplitKorean(string input)
+        {
+            if (string.IsNullOrEmpty(input) || input.Length != 1)
+                return "";
+
+            char c = input[0];
+
+            string[] ChoSung = new string[]
+            {
+                "ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ",
+                "ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"
+            };
+
+            string[] JungSung = new string[]
+            {
+                "ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ",
+                "ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ"
+            };
+
+            string[] JongSung = new string[]
+            {
+                "", "ㄱ","ㄲ","ㄳ","ㄴ","ㄵ","ㄶ","ㄷ","ㄹ","ㄺ",
+                "ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅁ","ㅂ","ㅄ","ㅅ",
+                "ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"
+            };
+
+            if (c < 0xAC00 || c > 0xD7A3)
+                return "";
+
+            int unicode = c - 0xAC00;
+            int choIndex = unicode / (21 * 28);
+            int jungIndex = (unicode % (21 * 28)) / 28;
+            int jongIndex = unicode % 28;
+
+            // 초성 + 중성 + 종성을 문자열로 합쳐 반환
+            return ChoSung[choIndex] + JungSung[jungIndex] + JongSung[jongIndex];
+        }
+        //---------------------------------------------------------------------------
+
+
+
+        //------------------------------- 모음, 쌍자음, 겹자음 분리 -------------------------------
+        private string DetachedElement(string _inputValue)
+        {
+            return _inputValue switch
+            {
+                "ㅘ" => "ㅗㅏ",     // 모음
+                "ㅙ" => "ㅗㅐ",
+                "ㅚ" => "ㅗㅣ",
+                "ㅝ" => "ㅜㅓ",
+                "ㅞ" => "ㅜㅔ",    //ㅜㅓㅣ
+                "ㅟ" => "ㅜㅣ",
+                "ㅢ" => "ㅡㅣ",
+                "ㅐ" => "ㅏㅣ",
+                "ㅔ" => "ㅓㅣ",
+                "ㅒ" => "ㅑㅣ",
+                "ㅖ" => "ㅕㅣ",
+                "ㄲ" => "ㄱㄱ",    // 쌍자음
+                "ㄸ" => "ㄷㄷ",
+                "ㅃ" => "ㅂㅂ",
+                "ㅆ" => "ㅅㅅ",
+                "ㅉ" => "ㅈㅈ",
+                "ㄳ" => "ㄱㅅ",    // 겹자음
+                "ㄵ" => "ㄴㅈ",
+                "ㄶ" => "ㄴㅎ",
+                "ㄺ" => "ㄹㄱ",
+                "ㄻ" => "ㄹㅁ",
+                "ㄼ" => "ㄹㅂ",
+                "ㄽ" => "ㄹㅅ",
+                "ㄾ" => "ㄹㅌ",
+                "ㄿ" => "ㄹㅍ",
+                "ㅀ" => "ㄹㅎ",
+                "ㅄ" => "ㅂㅅ",
+                _ => _inputValue,  // 그 외는 그대로 반환
+            };
+        }
+        //---------------------------------------------------------------------------------------------
+
+
 
         //-------------------------------------------------------- A매트릭스 분석 --------------------------------------------------------
-        //-------------------------------- 난수 추출 --------------------------------
+        //-------------------------------- 2수조 난수 추출 --------------------------------
         private string getNum(string _menu, string _contentAddress)
         {
             string[] locationInfo = _contentAddress.Split("to");       // MetrixA1to1 형식의 데이터를 MetrixA1, 1 형식으로 나눔
@@ -52,20 +132,16 @@ namespace RNGenerator
             string xNum = locationInfo[0].Substring(7);     // X에 해당하는 위치값
             string yNum = locationInfo[1];                  // Y에 해당하는 위치값
 
-            string RNum = " "+FindControl(this, $"Metrix{_menu}XKey{xNum}").Text + FindControl(this, $"Metrix{_menu}YKey{yNum}").Text+" ";
-            
+            string RNum = FindControl(this, $"Metrix{_menu}XKey{xNum}").Text + FindControl(this, $"Metrix{_menu}YKey{yNum}").Text;
+
             return RNum;
         }
-        //---------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------
 
 
-        private void DecipherAMetrix(string _menu)      // 현재 2수조의 경우만 작성
+        //-------------------------------- 위치값 치환 --------------------------------
+        private Dictionary<string, string> GetLocationValue(string _inputValue, string _menu, Dictionary<string, string> _matchedData)      // 입력값, 동작할 매트릭스, 추출된 데이터를 저장할 Dictionary를 매개변수로 받음
         {
-            string inputValue = FindControl(this, $"Input_{_menu}").Text;           // 입력값
-            string removedSameValue = inputValue;               // 문장에서 이미 난수 추출이된 값을 제외하기 위해 사용한 변수
-            Dictionary<string, string> matchedData = new();
-
-
             for (int row = 1; row <= 10; row++)
             {
                 for (int col = 1; col <= 10; col++)
@@ -73,40 +149,153 @@ namespace RNGenerator
                     string controlName = $"Metrix{_menu}{row}to{col}";
                     Control ctrl = FindControl(this, controlName);
 
-                    if (inputValue.Contains(ctrl.Text) && !matchedData.ContainsKey(ctrl.Text))         // 입력값이 내부치를 포함하고 있다면 Key 값을 내부치로 Value 값을 추출된 난수로 할당
+                    if (_inputValue.Contains(ctrl.Text) && !_matchedData.ContainsKey(ctrl.Text))         // 입력값이 내부치를 포함하고 있다면 Key 값을 내부치로 Value 값을 추출된 난수로 할당
                     {
-                        matchedData.Add(ctrl.Text, getNum(_menu, controlName));
+                        _matchedData.Add(ctrl.Text, getNum(_menu, controlName));
                     }
                 }
             }
 
-            //if (matchedData.Count > 0)          // 문장 또는 단어, 한 글자로 매칭된 데이터가 존재하는 경우 해당 단어들 제외
-            //{
-            //    foreach (KeyValuePair<string, string> item in matchedData)
-            //    {
-            //        removedSameValue = inputValue.Replace(item.Value, "");
-            //    }
-            //}
+            return _matchedData;
+        }
+        //-----------------------------------------------------------------------------
 
 
-            foreach (KeyValuePair<string, string> item in matchedData)
+        //-------------------------------- 10개마다 라인개행 --------------------------------
+        public static string InsertNewLine(string input, int groupSize = 10)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return "";
+
+            string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 0; i < parts.Length; i++)
             {
-                try
-                {
-                    removedSameValue = removedSameValue.Replace(item.Key, item.Value);
-                }
-                catch (Exception ex)
-                {
+                result.Append(parts[i]);
 
+                if (i != parts.Length - 1)
+                    result.Append(' ');
+
+                // groupSize개마다 줄바꿈
+                if ((i + 1) % groupSize == 0 && i != parts.Length - 1)
+                    result.Append(Environment.NewLine);
+            }
+
+            return result.ToString();
+        }
+        //-----------------------------------------------------------------------------------
+
+
+        private void DecipherAMetrix(string _menu)      // 현재 2수조의 경우만 작성
+        {
+            string inputValue = FindControl(this, $"Input_{_menu}").Text;           // 입력값
+            string removedSameValue = inputValue;               // 문장에서 이미 난수 추출이된 값을 제외하기 위해 사용한 변수
+            Dictionary<string, string> matchedData = new();     // Key 값을 입력값으로, Value 값을 난수로 가지는 Dictionary
+
+
+
+            matchedData = GetLocationValue(inputValue, _menu, matchedData); // 입력값에 해당하는 내부치와 난수 매칭
+
+
+
+            if (matchedData.Count > 0)          // 문장 또는 단어, 한 글자로 매칭된 데이터가 존재하는 경우 해당 단어들 제외
+            {
+                foreach (KeyValuePair<string, string> item in matchedData)
+                {
+                    try
+                    {
+                        removedSameValue = removedSameValue.Replace(item.Key, "");
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 }
             }
-            
 
-            FindControl(this, $"Output_{_menu}").Text = removedSameValue.Trim();
+
+            if (removedSameValue.Length > 0) // 문장, 단어, 한 글자 단위로 나눈 후 변환되지 않은 단어가 남아 있을 경우
+            {
+                string[] restWord = new string[removedSameValue.Length];
+
+
+                for (int i = 0; i < removedSameValue.Length; i++)       // 남아있는 문장을 한 글자 단위로 나누기
+                {
+                    restWord[i] = removedSameValue[i].ToString();
+                }
+
+                foreach (var eachWord in restWord)      // 한 글자씩 반복문을 돌려 난수를 추출
+                {
+                    string detachedWord = SplitKorean(eachWord);      // 자모음 분리 >> 하나의 string으로 출력됨 ex) 강 -> ㄱㅏㅇ
+                    inputValue = inputValue.Replace(eachWord, detachedWord);      // 입력값 중 난수로 치환되지 않은 단어를 자모음으로 분리하여 저장
+
+                    for (int cnt = 0; cnt < detachedWord.Length; cnt++)
+                    {
+                        GetLocationValue(detachedWord[cnt].ToString(), _menu, matchedData); // 자모음 분리된 단어를 다시 난수로 치환하기 위해 GetLocationValue 호출
+                    }
+                }
+            }
+
+
+            string tempInput = inputValue;            // inputValue로 반복하는동안 inputValue의 값을 조정할 임시 변수
+
+            for (int dtc = 0; dtc < inputValue.Length; dtc++)   // 겹자음 등을 각각의 단자음으로 구성하였을 경우 분리 시키는 로직
+            {
+                tempInput = tempInput.Replace(inputValue[dtc].ToString(), DetachedElement(inputValue[dtc].ToString())); // 입력값 중 모음, 쌍자음, 겹자음을 분리하여 저장
+            }
+
+            inputValue = tempInput;        // 분리된 모음, 쌍자음, 겹자음을 포함한 입력값으로 변경
+
+
+
+            var sortedKeys = matchedData.Keys.OrderByDescending(k => k.Length).ToList();   // Key값의 길이 기준으로 내림차순 정렬
+            string result = "";         // 결과를 저장할 변수
+
+            while (inputValue.Length > 0)
+            {
+                string buffer = ""; // 잘라낸 글자들 저장
+                bool matched = false;
+
+                // inputValue에서 뒤에서부터 한 글자씩 잘라가며 매칭 시도
+                for (int len = inputValue.Length; len > 0; len--)
+                {
+                    string current = inputValue.Substring(0, len); // 앞에서 len만큼 자른 부분
+
+                    foreach (var key in sortedKeys)
+                    {
+                        if (current == key)
+                        {
+                            result += matchedData[key] + " ";
+                            inputValue = inputValue.Substring(len); // 매칭된 부분 제거
+                            inputValue = buffer + inputValue;       // 자른 부분 복구
+                            matched = true;
+                            break;
+                        }
+                    }
+
+                    if (matched)
+                        break;
+
+                    // 매칭 실패 시, 맨 끝 글자를 buffer로 이동
+                    buffer = inputValue[inputValue.Length - 1] + buffer;
+                    inputValue = inputValue.Substring(0, inputValue.Length - 1);
+                }
+
+                // 매칭된 게 하나도 없고 inputValue가 줄어든 상태로 남아 있으면 무한 루프 방지
+                if (!matched)
+                {
+                    Console.WriteLine($"[경고] 매칭 실패: '{inputValue}'는 어떤 키에도 해당하지 않습니다.");
+                    break;
+                }
+            }
+
+
+            FindControl(this, $"Output_{_menu}").Text = InsertNewLine(result); // 최종적으로 난수로 치환된 문자열을 출력창에 표시, 10개마다 개행 처리
         }
         //--------------------------------------------------------------------------------------------------------------------------------
-
-
+        
+        
 
         //-------------------------------------------------------- B매트릭스 분석 --------------------------------------------------------
 
@@ -129,8 +318,8 @@ namespace RNGenerator
 
             for (int keyNum = 1; keyNum <= 10; keyNum++)
             {
-                string controlName1 = $"Metrix{_menu}X{keyNum}";
-                string controlName2 = $"Metrix{_menu}Y{keyNum}";
+                string controlName1 = $"Metrix{_menu}XKey{keyNum}";
+                string controlName2 = $"Metrix{_menu}YKey{keyNum}";
 
                 Control ctrl1 = FindControl(this, controlName1);
                 Control ctrl2 = FindControl(this, controlName2);
@@ -163,8 +352,8 @@ namespace RNGenerator
 
             for (int keyNum = 1; keyNum <= 10; keyNum++)
             {
-                string controlName1 = $"Metrix{_menu}X{keyNum}";
-                string controlName2 = $"Metrix{_menu}Y{keyNum}";
+                string controlName1 = $"Metrix{_menu}XKey{keyNum}";
+                string controlName2 = $"Metrix{_menu}YKey{keyNum}";
 
                 Control ctrl1 = FindControl(this, controlName1);
                 Control ctrl2 = FindControl(this, controlName2);
@@ -255,6 +444,28 @@ namespace RNGenerator
                     {
                         tb2.Text = "";
                     }
+                }
+            }
+        }
+
+        private void DelKeyValues(string _menu)      // Key값 삭제
+        {
+            for (int row = 1; row <= 10; row++)
+            {
+                string controlName1 = $"Metrix{_menu}XKey{row}";
+                string controlName2 = $"Metrix{_menu}YKey{row}";
+
+                Control ctrl1 = FindControl(this, controlName1);
+                Control ctrl2 = FindControl(this, controlName2);
+
+                if (ctrl1 is System.Windows.Forms.TextBox tb1)
+                {
+                    tb1.Text = "";
+                }
+
+                if (ctrl2 is System.Windows.Forms.TextBox tb2)
+                {
+                    tb2.Text = "";
                 }
             }
         }
@@ -372,6 +583,24 @@ namespace RNGenerator
             DelCols("C");
         }
         //----------------------------------------------------------
+
+
+        //Key값 삭제 ----------------------------------------------
+        private void KeyValDel1_Click(object sender, EventArgs e)
+        {
+            DelKeyValues("A");
+        }
+
+        private void KeyValDel2_Click(object sender, EventArgs e)
+        {
+            DelKeyValues("B");
+        }
+
+        private void KeyValDel3_Click(object sender, EventArgs e)
+        {
+            DelKeyValues("C");
+        }
+        //--------------------------------------------------------
 
 
         //내부치 삭제 ----------------------------------------------
