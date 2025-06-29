@@ -1,5 +1,6 @@
 using System;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -10,23 +11,76 @@ namespace RNGenerator
 {
     public partial class RNGenerator : Form
     {
-        string[] strArr_TempContent = new string[100];
-        string[] strArr_XKey = new string[10];
-        string[] strArr_YKey = new string[10];
+        public static RNGenerator Instance;  // 다른 클래스에서 접근할 수 있도록 static 변수
+
 
         public RNGenerator()
         {
             InitializeComponent();
+            Instance = this;
 
-            Input_A.TextChanged += (s, e) => DecipherAMetrix("A");
-            Input_B.TextChanged += (s, e) => DecipherAMetrix("B");
-            Input_C.TextChanged += (s, e) => DecipherAMetrix("C");
+            this.KeyPreview = true;
+        }
+
+
+        string[] tableClassArray = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" }; // 테이블 클래스 이름 배열
+
+
+        private float currentZoom = 1.0f;
+        private readonly float minZoom = 0.5f;
+        private readonly float maxZoom = 2.0f;
+
+
+        private List<System.Windows.Forms.TextBox> matchedTextBoxes = new List<System.Windows.Forms.TextBox>();
+
+
+
+        //----------------------------- 검색 기능 -----------------------------
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                SearchBox searchForm = new SearchBox(this);  // 현재 폼 전달
+                searchForm.Show(this);  // 검색 팝업 표시
+            }
+        }
+
+
+        public void SearchAndFocus(string searchText, int matchIndex)
+        {
+            // 검색 결과 새로 갱신
+            matchedTextBoxes = this.Controls.OfType<System.Windows.Forms.TextBox>()
+                .Where(tb => tb.Text.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (matchedTextBoxes.Count == 0)
+            {
+                MessageBox.Show("일치하는 항목이 없습니다.");
+                return;
+            }
+
+            if (matchIndex >= matchedTextBoxes.Count)
+                matchIndex = 0;  // 순환 구조
+
+            var tb = matchedTextBoxes[matchIndex];
+            tb.Focus();
+            tb.Select(tb.Text.IndexOf(searchText, StringComparison.OrdinalIgnoreCase), searchText.Length);
+            this.ScrollControlIntoView(tb);
         }
 
 
 
+        public int GetMatchCount(string keyword)
+        {
+            return this.Controls
+                .OfType<System.Windows.Forms.TextBox>()
+                .Count(tb => tb.Text.Contains(keyword, StringComparison.OrdinalIgnoreCase));
+        }
+        //---------------------------------------------------------------------
+
+
+
         //------------------------------- 컨트롤 탐색 -------------------------------
-        private Control FindControl(Control _parent, string _name)     // 재귀 탐색 >> 선택한 항목의 자식들을 탐색하여 내가 원하는 요소를 매칭
+        public Control FindControl(Control _parent, string _name)     // 재귀 탐색 >> 선택한 항목의 자식들을 탐색하여 내가 원하는 요소를 매칭
         {
             foreach (Control control in _parent.Controls)
             {
@@ -37,588 +91,107 @@ namespace RNGenerator
                 if (found != null)
                     return found;
             }
+
+
+            //MessageBox.Show($"[오류] '{_name}' 컨트롤을 찾을 수 없습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
             return null;
         }
         //---------------------------------------------------------------------------
 
 
-        //------------------------------- 자모음 분리 -------------------------------
-        public static string SplitKorean(string input)
+
+        //-------------------- 위치값 추출 --------------------
+        // 우선 2수조만 진행
+        private string positionValue(string tableClass, string xVal, string yVal)
         {
-            if (string.IsNullOrEmpty(input) || input.Length != 1)
-                return "";
+            string position = FindControl(this, $"{tableClass}keyX{xVal}").Text + FindControl(this, $"{tableClass}keyY{yVal}").Text;
 
-            char c = input[0];
-
-            string[] ChoSung = new string[]
-            {
-                "ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ",
-                "ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"
-            };
-
-            string[] JungSung = new string[]
-            {
-                "ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ",
-                "ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ"
-            };
-
-            string[] JongSung = new string[]
-            {
-                "", "ㄱ","ㄲ","ㄳ","ㄴ","ㄵ","ㄶ","ㄷ","ㄹ","ㄺ",
-                "ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅁ","ㅂ","ㅄ","ㅅ",
-                "ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"
-            };
-
-            if (c < 0xAC00 || c > 0xD7A3)
-                return "";
-
-            int unicode = c - 0xAC00;
-            int choIndex = unicode / (21 * 28);
-            int jungIndex = (unicode % (21 * 28)) / 28;
-            int jongIndex = unicode % 28;
-
-            // 초성 + 중성 + 종성을 문자열로 합쳐 반환
-            return ChoSung[choIndex] + JungSung[jungIndex] + JongSung[jongIndex];
+            return position;
         }
-        //---------------------------------------------------------------------------
+        //-----------------------------------------------------
 
-
-
-        //------------------------------- 모음, 쌍자음, 겹자음 분리 -------------------------------
-        private string DetachedElement(string _inputValue)
+        //-------------------- 내부치 매칭 --------------------
+        public Dictionary<string, string> MatchedData(Dictionary<string, string> _dic)
         {
-            return _inputValue switch
+            bool isMatched = false; // 해당 key에 대한 매칭 여부
+            List<string> keys = _dic.Keys.ToList(); // 키 목록 복사
+
+
+            foreach (string key in keys)
             {
-                "ㅘ" => "ㅗㅏ",     // 모음
-                "ㅙ" => "ㅗㅐ",
-                "ㅚ" => "ㅗㅣ",
-                "ㅝ" => "ㅜㅓ",
-                "ㅞ" => "ㅜㅔ",    //ㅜㅓㅣ
-                "ㅟ" => "ㅜㅣ",
-                "ㅢ" => "ㅡㅣ",
-                "ㅐ" => "ㅏㅣ",
-                "ㅔ" => "ㅓㅣ",
-                "ㅒ" => "ㅑㅣ",
-                "ㅖ" => "ㅕㅣ",
-                "ㄲ" => "ㄱㄱ",    // 쌍자음
-                "ㄸ" => "ㄷㄷ",
-                "ㅃ" => "ㅂㅂ",
-                "ㅆ" => "ㅅㅅ",
-                "ㅉ" => "ㅈㅈ",
-                "ㄳ" => "ㄱㅅ",    // 겹자음
-                "ㄵ" => "ㄴㅈ",
-                "ㄶ" => "ㄴㅎ",
-                "ㄺ" => "ㄹㄱ",
-                "ㄻ" => "ㄹㅁ",
-                "ㄼ" => "ㄹㅂ",
-                "ㄽ" => "ㄹㅅ",
-                "ㄾ" => "ㄹㅌ",
-                "ㄿ" => "ㄹㅍ",
-                "ㅀ" => "ㄹㅎ",
-                "ㅄ" => "ㅂㅅ",
-                _ => _inputValue,  // 그 외는 그대로 반환
-            };
-        }
-        //---------------------------------------------------------------------------------------------
+                isMatched = false;
 
-
-
-        //-------------------------------------------------------- A매트릭스 분석 --------------------------------------------------------
-        //-------------------------------- 2수조 난수 추출 --------------------------------
-        private string getNum(string _menu, string _contentAddress)
-        {
-            string[] locationInfo = _contentAddress.Split("to");       // MetrixA1to1 형식의 데이터를 MetrixA1, 1 형식으로 나눔
-
-            string xNum = locationInfo[0].Substring(7);     // X에 해당하는 위치값
-            string yNum = locationInfo[1];                  // Y에 해당하는 위치값
-
-            string RNum = FindControl(this, $"Metrix{_menu}XKey{xNum}").Text + FindControl(this, $"Metrix{_menu}YKey{yNum}").Text;
-
-            return RNum;
-        }
-        //----------------------------------------------------------------------------------
-
-
-        //-------------------------------- 위치값 치환 --------------------------------
-        private Dictionary<string, string> GetLocationValue(string _inputValue, string _menu, Dictionary<string, string> _matchedData)      // 입력값, 동작할 매트릭스, 추출된 데이터를 저장할 Dictionary를 매개변수로 받음
-        {
-            for (int row = 1; row <= 10; row++)
-            {
-                for (int col = 1; col <= 10; col++)
+                for (int i = 0; i < tableClassArray.Length && !isMatched; i++) // 조기 종료 조건
                 {
-                    string controlName = $"Metrix{_menu}{row}to{col}";
-                    Control ctrl = FindControl(this, controlName);
-
-                    if (_inputValue.Contains(ctrl.Text) && !_matchedData.ContainsKey(ctrl.Text))         // 입력값이 내부치를 포함하고 있다면 Key 값을 내부치로 Value 값을 추출된 난수로 할당
+                    for (int x = 1; x <= 10 && !isMatched; x++)
                     {
-                        _matchedData.Add(ctrl.Text, getNum(_menu, controlName));
-                    }
-                }
-            }
-
-            return _matchedData;
-        }
-        //-----------------------------------------------------------------------------
-
-
-        //-------------------------------- 10개마다 라인개행 --------------------------------
-        public static string InsertNewLine(string input, int groupSize = 10)
-        {
-            if (string.IsNullOrWhiteSpace(input))
-                return "";
-
-            string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            StringBuilder result = new StringBuilder();
-
-            for (int i = 0; i < parts.Length; i++)
-            {
-                result.Append(parts[i]);
-
-                if (i != parts.Length - 1)
-                    result.Append(' ');
-
-                // groupSize개마다 줄바꿈
-                if ((i + 1) % groupSize == 0 && i != parts.Length - 1)
-                    result.Append(Environment.NewLine);
-            }
-
-            return result.ToString();
-        }
-        //-----------------------------------------------------------------------------------
-
-
-        private void DecipherAMetrix(string _menu)      // 현재 2수조의 경우만 작성
-        {
-            string inputValue = FindControl(this, $"Input_{_menu}").Text;           // 입력값
-            string removedSameValue = inputValue;               // 문장에서 이미 난수 추출이된 값을 제외하기 위해 사용한 변수
-            Dictionary<string, string> matchedData = new();     // Key 값을 입력값으로, Value 값을 난수로 가지는 Dictionary
-
-
-
-            matchedData = GetLocationValue(inputValue, _menu, matchedData); // 입력값에 해당하는 내부치와 난수 매칭
-
-
-
-            if (matchedData.Count > 0)          // 문장 또는 단어, 한 글자로 매칭된 데이터가 존재하는 경우 해당 단어들 제외
-            {
-                foreach (KeyValuePair<string, string> item in matchedData)
-                {
-                    try
-                    {
-                        removedSameValue = removedSameValue.Replace(item.Key, "");
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-            }
-
-
-            if (removedSameValue.Length > 0) // 문장, 단어, 한 글자 단위로 나눈 후 변환되지 않은 단어가 남아 있을 경우
-            {
-                string[] restWord = new string[removedSameValue.Length];
-
-
-                for (int i = 0; i < removedSameValue.Length; i++)       // 남아있는 문장을 한 글자 단위로 나누기
-                {
-                    restWord[i] = removedSameValue[i].ToString();
-                }
-
-                foreach (var eachWord in restWord)      // 한 글자씩 반복문을 돌려 난수를 추출
-                {
-                    string detachedWord = SplitKorean(eachWord);      // 자모음 분리 >> 하나의 string으로 출력됨 ex) 강 -> ㄱㅏㅇ
-                    inputValue = inputValue.Replace(eachWord, detachedWord);      // 입력값 중 난수로 치환되지 않은 단어를 자모음으로 분리하여 저장
-
-                    for (int cnt = 0; cnt < detachedWord.Length; cnt++)
-                    {
-                        GetLocationValue(detachedWord[cnt].ToString(), _menu, matchedData); // 자모음 분리된 단어를 다시 난수로 치환하기 위해 GetLocationValue 호출
-                    }
-                }
-            }
-
-
-            string tempInput = inputValue;            // inputValue로 반복하는동안 inputValue의 값을 조정할 임시 변수
-
-            for (int dtc = 0; dtc < inputValue.Length; dtc++)   // 겹자음 등을 각각의 단자음으로 구성하였을 경우 분리 시키는 로직
-            {
-                tempInput = tempInput.Replace(inputValue[dtc].ToString(), DetachedElement(inputValue[dtc].ToString())); // 입력값 중 모음, 쌍자음, 겹자음을 분리하여 저장
-            }
-
-            inputValue = tempInput;        // 분리된 모음, 쌍자음, 겹자음을 포함한 입력값으로 변경
-
-
-
-            var sortedKeys = matchedData.Keys.OrderByDescending(k => k.Length).ToList();   // Key값의 길이 기준으로 내림차순 정렬
-            string result = "";         // 결과를 저장할 변수
-
-            while (inputValue.Length > 0)
-            {
-                string buffer = ""; // 잘라낸 글자들 저장
-                bool matched = false;
-
-                // inputValue에서 뒤에서부터 한 글자씩 잘라가며 매칭 시도
-                for (int len = inputValue.Length; len > 0; len--)
-                {
-                    string current = inputValue.Substring(0, len); // 앞에서 len만큼 자른 부분
-
-                    foreach (var key in sortedKeys)
-                    {
-                        if (current == key)
+                        for (int y = 1; y <= 10 && !isMatched; y++)
                         {
-                            result += matchedData[key] + " ";
-                            inputValue = inputValue.Substring(len); // 매칭된 부분 제거
-                            inputValue = buffer + inputValue;       // 자른 부분 복구
-                            matched = true;
-                            break;
+                            string ctrlKey = $"{tableClassArray[i]}var{x}_{y}"; // 컨트롤 이름
+                            Control ctrl = FindControl(this, ctrlKey);
+
+                            if (ctrl is System.Windows.Forms.TextBox textBox)
+                            {
+                                // 여기서 비교 기준이 무엇이냐에 따라 달라짐
+                                // Text 값이 현재 key와 같다면? 또는 단순히 비어있지 않다면?
+                                if (textBox.Text == key) // 정확한 매칭 시만 등록
+                                {
+                                    _dic[key] = positionValue(tableClassArray[i], x.ToString(), y.ToString());
+                                    isMatched = true; // 더 이상 반복하지 않게
+                                }
+                            }
                         }
                     }
-
-                    if (matched)
-                        break;
-
-                    // 매칭 실패 시, 맨 끝 글자를 buffer로 이동
-                    buffer = inputValue[inputValue.Length - 1] + buffer;
-                    inputValue = inputValue.Substring(0, inputValue.Length - 1);
-                }
-
-                // 매칭된 게 하나도 없고 inputValue가 줄어든 상태로 남아 있으면 무한 루프 방지
-                if (!matched)
-                {
-                    Console.WriteLine($"[경고] 매칭 실패: '{inputValue}'는 어떤 키에도 해당하지 않습니다.");
-                    break;
                 }
             }
 
+            // 값 확인용 출력
+            //string aaa = string.Join(Environment.NewLine, _dic.Select(kv => $"{kv.Key}: {kv.Value}"));
+            //MessageBox.Show(aaa);
 
-            FindControl(this, $"Output_{_menu}").Text = InsertNewLine(result); // 최종적으로 난수로 치환된 문자열을 출력창에 표시, 10개마다 개행 처리
+            return _dic;
         }
-        //--------------------------------------------------------------------------------------------------------------------------------
-        
-        
-
-        //-------------------------------------------------------- B매트릭스 분석 --------------------------------------------------------
-
-        //--------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------
 
 
-
-        //-------------------------------------------------------- C매트릭스 분석 --------------------------------------------------------
-
-        //--------------------------------------------------------------------------------------------------------------------------------
-
-
-
-        //---------------------------------------------------------- 버튼 이벤트 기능 ----------------------------------------------------------
-        //----------------------- 복사, 붙여넣기 옵션 -----------------------
-
-        private void CopyKeyValue(string _menu)             // Key값 복사
+        //---------------------------------------------------------- 버튼 이벤트 동작 ----------------------------------------------------------
+        private void Controller_Btn_Click(object sender, EventArgs e)
         {
-            int index = 0;
+            Controller controller = new Controller(); // 새 폼 생성
+            controller.Name = "Controller";           // 폼 이름 설정
 
-            for (int keyNum = 1; keyNum <= 10; keyNum++)
+            Form existingForm = Application.OpenForms["Controller"];
+            if (existingForm != null)
             {
-                string controlName1 = $"Metrix{_menu}XKey{keyNum}";
-                string controlName2 = $"Metrix{_menu}YKey{keyNum}";
-
-                Control ctrl1 = FindControl(this, controlName1);
-                Control ctrl2 = FindControl(this, controlName2);
-
-                if (ctrl1 is System.Windows.Forms.TextBox tb1)
-                {
-                    strArr_XKey[index] = tb1.Text;        // XKey 값을 글로벌에서 선언된 배열에 할당
-                }
-                else
-                {
-                    strArr_XKey[index] = string.Empty;
-                }
-
-                if (ctrl2 is System.Windows.Forms.TextBox tb2)
-                {
-                    strArr_YKey[index] = tb2.Text;        // YKey 값을 글로벌에서 선언된 배열에 할당
-                }
-                else
-                {
-                    strArr_YKey[index] = string.Empty;
-                }
-
-                index++;
+                existingForm.BringToFront();  // 화면 앞으로 가져옴
+                existingForm.Activate();      // 포커스 줌
             }
-        }
-
-        private void PasteKeyValue(string _menu)            // Key값 붙여넣기
-        {
-            int index = 0;
-
-            for (int keyNum = 1; keyNum <= 10; keyNum++)
+            else
             {
-                string controlName1 = $"Metrix{_menu}XKey{keyNum}";
-                string controlName2 = $"Metrix{_menu}YKey{keyNum}";
 
-                Control ctrl1 = FindControl(this, controlName1);
-                Control ctrl2 = FindControl(this, controlName2);
-
-                if (ctrl1 is System.Windows.Forms.TextBox tb1)
-                {
-                    tb1.Text = strArr_XKey[index];        // XKey 배열에 저장된 값을 할당
-                }
-
-                if (ctrl2 is System.Windows.Forms.TextBox tb2)
-                {
-                    tb2.Text = strArr_YKey[index];        // YKey 배열에 저장된 값을 할당
-                }
-
-                index++;
+                controller.Show();                // 비모달로 열기
             }
-
         }
 
-
-        private void CopyContent(string _menu)             // 내부치 복사
+        private void button2_Click(object sender, EventArgs e)
         {
-            int index = 0;
+            Scenario scenario = new Scenario();
+            scenario.Name = "Scenario";
 
-            for (int row = 1; row <= 10; row++) // X
+            Form existingForm = Application.OpenForms["Scenario"];
+            if (existingForm != null)
             {
-                for (int col = 1; col <= 10; col++) // Y
-                {
-                    string controlName = $"Metrix{_menu}{row}to{col}";
-                    Control ctrl = FindControl(this, controlName);
-
-                    if (ctrl is System.Windows.Forms.TextBox tb)
-                    {
-                        strArr_TempContent[index] = tb.Text;        // 내부치 값을 글로벌에서 선언된 배열에 할당
-                    }
-                    else
-                    {
-                        strArr_TempContent[index] = string.Empty;
-                    }
-
-                    index++;
-                }
+                existingForm.BringToFront();
+                existingForm.Activate();
             }
-        }
-
-        private void PasteContent(string _menu)            // 내부치 붙여넣기
-        {
-            int index = 0;
-
-            for (int row = 1; row <= 10; row++) // X
+            else
             {
-                for (int col = 1; col <= 10; col++) // Y
-                {
-                    string controlName = $"Metrix{_menu}{row}to{col}";
-                    Control ctrl = FindControl(this, controlName);
-
-                    if (ctrl is System.Windows.Forms.TextBox tb)
-                    {
-                        tb.Text = strArr_TempContent[index];        // 내부치 배열에 저장된 값을 할당
-                    }
-
-                    index++;
-                }
+                scenario.Show();
             }
         }
-        //-----------------------------------------------------------
-
-
-        //----------------------- 삭제 옵션 -----------------------
-        private void DelCols(string _menu)      // 지시부 삭제
-        {
-            for (int row = 1; row <= 2; row++)
-            {
-                for (int col = 1; col <= 10; col++)
-                {
-                    string controlName1 = $"MultiVal{_menu}X{row}to{col}";
-                    string controlName2 = $"MultiVal{_menu}Y{row}to{col}";
-
-                    Control ctrl1 = FindControl(this, controlName1);
-                    Control ctrl2 = FindControl(this, controlName2);
-
-                    if (ctrl1 is System.Windows.Forms.TextBox tb1)
-                    {
-                        tb1.Text = "";
-                    }
-
-                    if (ctrl2 is System.Windows.Forms.TextBox tb2)
-                    {
-                        tb2.Text = "";
-                    }
-                }
-            }
-        }
-
-        private void DelKeyValues(string _menu)      // Key값 삭제
-        {
-            for (int row = 1; row <= 10; row++)
-            {
-                string controlName1 = $"Metrix{_menu}XKey{row}";
-                string controlName2 = $"Metrix{_menu}YKey{row}";
-
-                Control ctrl1 = FindControl(this, controlName1);
-                Control ctrl2 = FindControl(this, controlName2);
-
-                if (ctrl1 is System.Windows.Forms.TextBox tb1)
-                {
-                    tb1.Text = "";
-                }
-
-                if (ctrl2 is System.Windows.Forms.TextBox tb2)
-                {
-                    tb2.Text = "";
-                }
-            }
-        }
-
-
-        private void DelContent(string _menu)      // 내부치 삭제
-        {
-            for (int row = 1; row <= 10; row++) // X
-            {
-                for (int col = 1; col <= 10; col++) // Y
-                {
-                    string controlName = $"Metrix{_menu}{row}to{col}";
-                    Control ctrl = FindControl(this, controlName);
-
-                    if (ctrl is System.Windows.Forms.TextBox tb)
-                    {
-                        tb.Text = "";
-                    }
-                }
-            }
-        }
-        //-------------------------------------------------------------------
-        //--------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-        //---------------------------------------------------------- 버튼 이벤트 사용 ----------------------------------------------------------
-        //Key값 복사 ----------------------------------------------
-        private void KeyValCopy1_Click(object sender, EventArgs e)
-        {
-            CopyKeyValue("A");
-        }
-
-        private void KeyValCopy2_Click(object sender, EventArgs e)
-        {
-            CopyKeyValue("B");
-        }
-
-        private void KeyValCopy3_Click(object sender, EventArgs e)
-        {
-            CopyKeyValue("C");
-        }
-        //----------------------------------------------------------
-
-
-        //Key값 붙여넣기 -------------------------------------------
-        private void KeyValPaste1_Click(object sender, EventArgs e)
-        {
-            PasteKeyValue("A");
-        }
-
-        private void KeyValPaste2_Click(object sender, EventArgs e)
-        {
-            PasteKeyValue("B");
-        }
-
-        private void KeyValPaste3_Click(object sender, EventArgs e)
-        {
-            PasteKeyValue("C");
-        }
-        //----------------------------------------------------------
-
-
-        //내부치 복사 ----------------------------------------------
-        private void ContentCopy1_Click(object sender, EventArgs e)
-        {
-            CopyContent("A");
-        }
-
-        private void ContentCopy2_Click(object sender, EventArgs e)
-        {
-            CopyContent("B");
-        }
-
-        private void ContentCopy3_Click(object sender, EventArgs e)
-        {
-            CopyContent("C");
-        }
-        //----------------------------------------------------------
-
-
-        //내부치 붙여넣기 ------------------------------------------
-        private void ContentPaste1_Click(object sender, EventArgs e)
-        {
-            PasteContent("A");
-        }
-
-        private void ContentPaste2_Click(object sender, EventArgs e)
-        {
-            PasteContent("B");
-        }
-
-        private void ContentPaste3_Click(object sender, EventArgs e)
-        {
-            PasteContent("C");
-        }
-        //----------------------------------------------------------
-
-
-        //지시부 삭제 ----------------------------------------------
-        private void RowDel1_Click(object sender, EventArgs e)
-        {
-            DelCols("A");
-        }
-
-        private void RowDel2_Click(object sender, EventArgs e)
-        {
-            DelCols("B");
-        }
-        private void RowDel3_Click(object sender, EventArgs e)
-        {
-            DelCols("C");
-        }
-        //----------------------------------------------------------
-
-
-        //Key값 삭제 ----------------------------------------------
-        private void KeyValDel1_Click(object sender, EventArgs e)
-        {
-            DelKeyValues("A");
-        }
-
-        private void KeyValDel2_Click(object sender, EventArgs e)
-        {
-            DelKeyValues("B");
-        }
-
-        private void KeyValDel3_Click(object sender, EventArgs e)
-        {
-            DelKeyValues("C");
-        }
-        //--------------------------------------------------------
-
-
-        //내부치 삭제 ----------------------------------------------
-        private void ContentDel1_Click(object sender, EventArgs e)
-        {
-            DelContent("A");
-        }
-
-        private void ContentDel2_Click(object sender, EventArgs e)
-        {
-            DelContent("B");
-        }
-
-        private void ContentDel3_Click(object sender, EventArgs e)
-        {
-            DelContent("C");
-        }
-        //----------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------------------------
     }
 }
+
