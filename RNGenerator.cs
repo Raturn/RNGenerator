@@ -20,6 +20,7 @@ namespace RNGenerator
             Instance = this;
 
             this.KeyPreview = true;
+            this.KeyDown += MainForm_KeyDown;
         }
 
 
@@ -66,15 +67,6 @@ namespace RNGenerator
             tb.Select(tb.Text.IndexOf(searchText, StringComparison.OrdinalIgnoreCase), searchText.Length);
             this.ScrollControlIntoView(tb);
         }
-
-
-
-        public int GetMatchCount(string keyword)
-        {
-            return this.Controls
-                .OfType<System.Windows.Forms.TextBox>()
-                .Count(tb => tb.Text.Contains(keyword, StringComparison.OrdinalIgnoreCase));
-        }
         //---------------------------------------------------------------------
 
 
@@ -106,7 +98,14 @@ namespace RNGenerator
         // 우선 2수조만 진행
         private string positionValue(string tableClass, string xVal, string yVal)
         {
-            string position = FindControl(this, $"{tableClass}keyX{xVal}").Text + FindControl(this, $"{tableClass}keyY{yVal}").Text;
+            string position = "";
+
+            position += FindControl(this, $"{tableClass}metrixX1_{xVal}")?.Text ?? "";
+            position += FindControl(this, $"{tableClass}keyX{xVal}")?.Text ?? "";
+            position += FindControl(this, $"{tableClass}metrixX2_{xVal}")?.Text ?? "";
+            position += FindControl(this, $"{tableClass}metrixY1_{yVal}")?.Text ?? "";
+            position += FindControl(this, $"{tableClass}keyY{yVal}")?.Text ?? "";
+            position += FindControl(this, $"{tableClass}metrixY2_{yVal}")?.Text ?? "";
 
             return position;
         }

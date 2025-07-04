@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -34,9 +36,6 @@
             scenarioSave = new Button();
             scenarioLoad = new Button();
             groupBox1 = new GroupBox();
-            autoFullSave = new Button();
-            autoFullChange = new Button();
-            autoValueBtn = new Button();
             label4 = new Label();
             maxLengthDisplay = new Label();
             label2 = new Label();
@@ -64,13 +63,12 @@
             wordChange = new Button();
             wordInput = new TextBox();
             groupBox5 = new GroupBox();
-            RNAllSaveBtn4 = new Button();
             selfSave = new Button();
-            newLineBtn = new Button();
             selfNumSW = new Button();
             selfInputSW = new Button();
             selfChange = new Button();
             selfInput = new TextBox();
+            scenarioComplete = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox7.SuspendLayout();
@@ -89,7 +87,7 @@
             // 
             scenarioInput.Font = new Font("맑은 고딕", 12F);
             scenarioInput.Location = new Point(6, 106);
-            scenarioInput.MaxLength = 300;
+            scenarioInput.MaxLength = 250;
             scenarioInput.Multiline = true;
             scenarioInput.Name = "scenarioInput";
             scenarioInput.ScrollBars = ScrollBars.Vertical;
@@ -127,9 +125,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(autoFullSave);
-            groupBox1.Controls.Add(autoFullChange);
-            groupBox1.Controls.Add(autoValueBtn);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(maxLengthDisplay);
             groupBox1.Controls.Add(label2);
@@ -147,36 +142,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "시나리오";
             // 
-            // autoFullSave
-            // 
-            autoFullSave.Location = new Point(1030, 226);
-            autoFullSave.Name = "autoFullSave";
-            autoFullSave.Size = new Size(127, 23);
-            autoFullSave.TabIndex = 28;
-            autoFullSave.Text = "전체 저장";
-            autoFullSave.UseVisualStyleBackColor = true;
-            autoFullSave.Click += autoFullSave_Click;
-            // 
-            // autoFullChange
-            // 
-            autoFullChange.Location = new Point(1030, 197);
-            autoFullChange.Name = "autoFullChange";
-            autoFullChange.Size = new Size(127, 23);
-            autoFullChange.TabIndex = 27;
-            autoFullChange.Text = "전체 난수 변환";
-            autoFullChange.UseVisualStyleBackColor = true;
-            autoFullChange.Click += autoFullChange_Click;
-            // 
-            // autoValueBtn
-            // 
-            autoValueBtn.Location = new Point(1030, 168);
-            autoValueBtn.Name = "autoValueBtn";
-            autoValueBtn.Size = new Size(127, 23);
-            autoValueBtn.TabIndex = 26;
-            autoValueBtn.Text = "전체 내부치 할당";
-            autoValueBtn.UseVisualStyleBackColor = true;
-            autoValueBtn.Click += autoValueBtn_Click;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -185,7 +150,7 @@
             label4.Name = "label4";
             label4.Size = new Size(201, 15);
             label4.TabIndex = 24;
-            label4.Text = "※ 최대 300자까지 작성 가능합니다.";
+            label4.Text = "※ 최대 250자까지 작성 가능합니다.";
             // 
             // maxLengthDisplay
             // 
@@ -194,7 +159,7 @@
             maxLengthDisplay.Name = "maxLengthDisplay";
             maxLengthDisplay.Size = new Size(53, 15);
             maxLengthDisplay.TabIndex = 23;
-            maxLengthDisplay.Text = "/ 300 자";
+            maxLengthDisplay.Text = "/ 250 자";
             // 
             // label2
             // 
@@ -230,6 +195,7 @@
             partsInput.Location = new Point(7, 22);
             partsInput.Multiline = true;
             partsInput.Name = "partsInput";
+            partsInput.ReadOnly = true;
             partsInput.ScrollBars = ScrollBars.Vertical;
             partsInput.Size = new Size(1018, 292);
             partsInput.TabIndex = 10;
@@ -370,6 +336,7 @@
             letterInput.Location = new Point(6, 22);
             letterInput.Multiline = true;
             letterInput.Name = "letterInput";
+            letterInput.ReadOnly = true;
             letterInput.ScrollBars = ScrollBars.Vertical;
             letterInput.Size = new Size(1018, 292);
             letterInput.TabIndex = 10;
@@ -445,15 +412,14 @@
             wordInput.Location = new Point(6, 22);
             wordInput.Multiline = true;
             wordInput.Name = "wordInput";
+            wordInput.ReadOnly = true;
             wordInput.ScrollBars = ScrollBars.Vertical;
             wordInput.Size = new Size(1018, 292);
             wordInput.TabIndex = 10;
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(RNAllSaveBtn4);
             groupBox5.Controls.Add(selfSave);
-            groupBox5.Controls.Add(newLineBtn);
             groupBox5.Controls.Add(selfNumSW);
             groupBox5.Controls.Add(selfInputSW);
             groupBox5.Controls.Add(selfChange);
@@ -465,16 +431,6 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "수동 변환";
             // 
-            // RNAllSaveBtn4
-            // 
-            RNAllSaveBtn4.Location = new Point(1030, 248);
-            RNAllSaveBtn4.Name = "RNAllSaveBtn4";
-            RNAllSaveBtn4.Size = new Size(127, 23);
-            RNAllSaveBtn4.TabIndex = 26;
-            RNAllSaveBtn4.Text = "난수 전체 저장";
-            RNAllSaveBtn4.UseVisualStyleBackColor = true;
-            RNAllSaveBtn4.Click += RNAllSaveBtn4_Click;
-            // 
             // selfSave
             // 
             selfSave.Location = new Point(1030, 292);
@@ -485,19 +441,9 @@
             selfSave.UseVisualStyleBackColor = true;
             selfSave.Click += selfSave_Click;
             // 
-            // newLineBtn
-            // 
-            newLineBtn.Location = new Point(1030, 56);
-            newLineBtn.Name = "newLineBtn";
-            newLineBtn.Size = new Size(127, 23);
-            newLineBtn.TabIndex = 14;
-            newLineBtn.Text = "줄 바꿈 적용";
-            newLineBtn.UseVisualStyleBackColor = true;
-            newLineBtn.Click += newLineBtn_Click;
-            // 
             // selfNumSW
             // 
-            selfNumSW.Location = new Point(1030, 124);
+            selfNumSW.Location = new Point(1030, 80);
             selfNumSW.Name = "selfNumSW";
             selfNumSW.Size = new Size(127, 23);
             selfNumSW.TabIndex = 13;
@@ -507,7 +453,7 @@
             // 
             // selfInputSW
             // 
-            selfInputSW.Location = new Point(1030, 90);
+            selfInputSW.Location = new Point(1030, 51);
             selfInputSW.Name = "selfInputSW";
             selfInputSW.Size = new Size(127, 23);
             selfInputSW.TabIndex = 12;
@@ -535,6 +481,16 @@
             selfInput.Size = new Size(1018, 292);
             selfInput.TabIndex = 10;
             // 
+            // scenarioComplete
+            // 
+            scenarioComplete.Location = new Point(988, 353);
+            scenarioComplete.Name = "scenarioComplete";
+            scenarioComplete.Size = new Size(138, 23);
+            scenarioComplete.TabIndex = 20;
+            scenarioComplete.Text = "시나리오 결과";
+            scenarioComplete.UseVisualStyleBackColor = true;
+            scenarioComplete.Click += scenarioComplete_Click;
+            // 
             // Scenario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -542,6 +498,7 @@
             AutoScroll = true;
             AutoScrollMargin = new Size(0, 20);
             ClientSize = new Size(1266, 761);
+            Controls.Add(scenarioComplete);
             Controls.Add(groupBox5);
             Controls.Add(groupBox3);
             Controls.Add(groupBox7);
@@ -591,7 +548,6 @@
         private Button selfChange;
         private TextBox selfInput;
         private Button scenarioChange;
-        private Button newLineBtn;
         private Button partsSave;
         private Button wordSave;
         private Button selfSave;
@@ -599,13 +555,10 @@
         private Button RNAllSaveBtn1;
         private Button RNAllSaveBtn2;
         private Button RNAllSaveBtn3;
-        private Button RNAllSaveBtn4;
         private Label label4;
         private Label maxLengthDisplay;
         private Button letterSave;
         private Label lengthChange;
-        private Button autoValueBtn;
-        private Button autoFullSave;
-        private Button autoFullChange;
+        private Button scenarioComplete;
     }
 }

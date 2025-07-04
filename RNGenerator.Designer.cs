@@ -645,7 +645,7 @@ namespace RNGenerator
             Cvar1_3 = new TextBox();
             Cvar1_2 = new TextBox();
             Cvar1_1 = new TextBox();
-            textBox2 = new TextBox();
+            CmetrixY2_10 = new TextBox();
             CmetrixY2_9 = new TextBox();
             CmetrixY2_8 = new TextBox();
             CmetrixY2_7 = new TextBox();
@@ -7688,13 +7688,13 @@ namespace RNGenerator
             Cvar1_1.TabIndex = 6846;
             Cvar1_1.TextAlign = HorizontalAlignment.Center;
             // 
-            // textBox2
+            // CmetrixY2_10
             // 
-            textBox2.Location = new Point(1669, 1295);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(142, 23);
-            textBox2.TabIndex = 6845;
-            textBox2.TextAlign = HorizontalAlignment.Center;
+            CmetrixY2_10.Location = new Point(1669, 1295);
+            CmetrixY2_10.Name = "CmetrixY2_10";
+            CmetrixY2_10.Size = new Size(142, 23);
+            CmetrixY2_10.TabIndex = 6845;
+            CmetrixY2_10.TextAlign = HorizontalAlignment.Center;
             // 
             // CmetrixY2_9
             // 
@@ -25968,7 +25968,7 @@ namespace RNGenerator
             this.Controls.Add(Cvar1_3);
             this.Controls.Add(Cvar1_2);
             this.Controls.Add(Cvar1_1);
-            this.Controls.Add(textBox2);
+            this.Controls.Add(CmetrixY2_10);
             this.Controls.Add(CmetrixY2_9);
             this.Controls.Add(CmetrixY2_8);
             this.Controls.Add(CmetrixY2_7);
@@ -26978,7 +26978,7 @@ namespace RNGenerator
         private TextBox Cvar1_3;
         private TextBox Cvar1_2;
         private TextBox Cvar1_1;
-        private TextBox textBox2;
+        private TextBox CmetrixY2_10;
         private TextBox CmetrixY2_9;
         private TextBox CmetrixY2_8;
         private TextBox CmetrixY2_7;

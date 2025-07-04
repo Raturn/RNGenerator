@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace RNGenerator
 {
@@ -45,9 +46,25 @@ namespace RNGenerator
                 openFileDialog.Title = "텍스트 파일 선택";
                 openFileDialog.InitialDirectory = @"C:\CA연구용역\격판";    // 기본 폴더 설정
 
+
+
                 // 파일 선택되었을 때
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    // 값을 불러오기전 존재하는 모든 텍스트박스 초기화
+                    foreach (Control ctrl in RNGenerator.Instance.Controls)
+                    {
+                        if (ctrl is TextBox textBox)
+                        {
+                            textBox.Text = string.Empty;
+                        }
+                        else if (ctrl.HasChildren)
+                        {
+                            // 재귀 호출로 GroupBox, Panel 등 내부까지 처리
+                            ClearAllTextBoxes(ctrl);
+                        }
+                    }
+
                     // 파일 경로
                     string filePath = openFileDialog.FileName;
 
@@ -75,9 +92,9 @@ namespace RNGenerator
                             int cnt = 0; // 카운트 변수 초기화
 
 
-                            if (String.IsNullOrEmpty(outerValues[0]))     // 비어있다면 동작 안 함
+                            if (!String.IsNullOrEmpty(outerValues[0]))     // 비어있다면 동작 안 함
                             {
-                                string[] eachElementArray = outerValues[0].Split(',');
+                                string[] eachElementArray = outerValues[0].Split("<SEP>");
                                 cnt = 1;
 
                                 foreach (string eachElement in eachElementArray)
@@ -99,7 +116,7 @@ namespace RNGenerator
 
                             if (!String.IsNullOrEmpty(outerValues[1]))     // 비어있다면 동작 안 함
                             {
-                                string[] eachElementArray = outerValues[1].Split(',');
+                                string[] eachElementArray = outerValues[1].Split("<SEP>");
                                 cnt = 1;
 
                                 foreach (string eachElement in eachElementArray)
@@ -121,7 +138,7 @@ namespace RNGenerator
 
                             if (!String.IsNullOrEmpty(outerValues[2]))     // 비어있다면 동작 안 함
                             {
-                                string[] eachElementArray = outerValues[2].Split(',');
+                                string[] eachElementArray = outerValues[2].Split("<SEP>");
                                 cnt = 1;
 
                                 foreach (string eachElement in eachElementArray)
@@ -143,7 +160,7 @@ namespace RNGenerator
 
                             if (!String.IsNullOrEmpty(outerValues[3]))     // 비어있다면 동작 안 함
                             {
-                                string[] eachElementArray = outerValues[3].Split(',');
+                                string[] eachElementArray = outerValues[3].Split("<SEP>");
                                 cnt = 1;
 
                                 foreach (string eachElement in eachElementArray)
@@ -165,7 +182,7 @@ namespace RNGenerator
 
                             if (!String.IsNullOrEmpty(outerValues[4]))     // 비어있다면 동작 안 함
                             {
-                                string[] eachElementArray = outerValues[4].Split(',');
+                                string[] eachElementArray = outerValues[4].Split("<SEP>");
                                 cnt = 1;
 
                                 foreach (string eachElement in eachElementArray)
@@ -187,7 +204,7 @@ namespace RNGenerator
 
                             if (!String.IsNullOrEmpty(outerValues[5]))     // 비어있다면 동작 안 함
                             {
-                                string[] eachElementArray = outerValues[5].Split(',');
+                                string[] eachElementArray = outerValues[5].Split("<SEP>");
                                 cnt = 1;
 
                                 foreach (string eachElement in eachElementArray)
@@ -214,7 +231,7 @@ namespace RNGenerator
 
                             for (int x = 0; x < 10; x++)
                             {
-                                string[] eachElementArray = innerValues[x].Split(",");
+                                string[] eachElementArray = innerValues[x].Split("<SEP>");
                                 int cnt = 1; // 카운트 변수 초기화
 
                                 foreach (string eachElement in eachElementArray)
@@ -226,7 +243,7 @@ namespace RNGenerator
                                     {
                                         if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
                                         {
-                                            ctrl_in.Text = eachElement; // 텍스트박스에 값 할당
+                                            ctrl_in.Text = eachElement; // 복호화 하여 텍스트박스에 값 할당
                                         }
                                     }
 
@@ -271,6 +288,8 @@ namespace RNGenerator
         //------------------------ 삭제 버튼 >> 체크된 항목만 삭제 ------------------------
         private void delBtn_Click(object sender, EventArgs e)
         {
+            metrixName.Text = ""; // 초기화
+
             var outerChkBox = RNGenerator.Instance.FindControl(this, "chkOuter") as CheckBox;
             var innerChkBox = RNGenerator.Instance.FindControl(this, "chkInner") as CheckBox;
 
@@ -357,12 +376,12 @@ namespace RNGenerator
                         }
                         else
                         {
-                            content += ctrl1.Text;
+                            content += ctrl1.Text;      // 구분자는 치환하여 저장
                         }
 
                         if (outNum1 < 9) // 마지막 내부치가 아닌 경우에만 구분자 추가
                         {
-                            content += ","; // 내부치 구분자
+                            content += "<SEP>"; // 내부치 구분자
                         }
                     }
                 }
@@ -385,7 +404,7 @@ namespace RNGenerator
 
                         if (outNum2 < 9) // 마지막 내부치가 아닌 경우에만 구분자 추가
                         {
-                            content += ","; // 내부치 구분자
+                            content += "<SEP>"; // 내부치 구분자
                         }
                     }
                 }
@@ -408,7 +427,7 @@ namespace RNGenerator
 
                         if (outNum3 < 9) // 마지막 내부치가 아닌 경우에만 구분자 추가
                         {
-                            content += ","; // 내부치 구분자
+                            content += "<SEP>"; // 내부치 구분자
                         }
                     }
                 }
@@ -431,7 +450,7 @@ namespace RNGenerator
 
                         if (outNum4 < 9) // 마지막 내부치가 아닌 경우에만 구분자 추가
                         {
-                            content += ","; // 내부치 구분자
+                            content += "<SEP>"; // 내부치 구분자
                         }
                     }
                 }
@@ -454,7 +473,7 @@ namespace RNGenerator
 
                         if (outNum5 < 9) // 마지막 내부치가 아닌 경우에만 구분자 추가
                         {
-                            content += ","; // 내부치 구분자
+                            content += "<SEP>"; // 내부치 구분자
                         }
                     }
                 }
@@ -477,7 +496,7 @@ namespace RNGenerator
 
                         if (outNum6 < 9) // 마지막 내부치가 아닌 경우에만 구분자 추가
                         {
-                            content += ","; // 내부치 구분자
+                            content += "<SEP>"; // 내부치 구분자
                         }
                     }
                 }
@@ -504,7 +523,7 @@ namespace RNGenerator
 
                             if (y < 10) // 마지막 내부치가 아닌 경우에만 구분자 추가
                             {
-                                content += ","; // 내부치 구분자
+                                content += "<SEP>"; // 내부치 구분자
                             }
                         }
                     }
@@ -560,24 +579,282 @@ namespace RNGenerator
         //------------------------ 새 메트릭스 생성 버튼 ------------------------
         private void newMetrix_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < tableClassArray.Length; i++) // 조기 종료 조건
-            {
-                for (int x = 1; x <= 10; x++)
-                {
-                    for (int y = 1; y <= 10; y++)
-                    {
-                        string ctrlKey = $"{tableClassArray[i]}var{x}_{y}"; // 컨트롤 이름
-                        Control ctrl = RNGenerator.Instance.FindControl(RNGenerator.Instance, ctrlKey);
+            metrixName.Text = ""; // 초기화
 
-                        if (ctrl is System.Windows.Forms.TextBox textBox)
-                        {
-                            ctrl.Text = ""; // 텍스트박스 비우기
-                        }
-                    }
+            ClearAllTextBoxes(RNGenerator.Instance);
+        }
+
+
+        private void ClearAllTextBoxes(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (ctrl is TextBox textBox)
+                {
+                    textBox.Text = "";
+                }
+                else if (ctrl.HasChildren)
+                {
+                    ClearAllTextBoxes(ctrl); // 하위 컨트롤도 검사
                 }
             }
         }
         //-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+        private void LoadMetrixFromFile(string fullPath)
+        {
+            try
+            {
+                // 값 초기화(텍스트박스 클리어)
+                foreach (Control ctrl in RNGenerator.Instance.Controls)
+                {
+                    if (ctrl is TextBox textBox)
+                        textBox.Text = string.Empty;
+                    else if (ctrl.HasChildren)
+                        ClearAllTextBoxes(ctrl);
+                }
+
+                // 파일명(확장자 제외) 변수에 저장
+                metrixName.Text = Path.GetFileNameWithoutExtension(fullPath);
+
+                // 파일 내용 읽기
+                string fileContent = File.ReadAllText(fullPath);
+
+                // 테이블별 데이터 분할 및 할당 처리 (기존 metrixLoad_Click 내부 코드)
+                string[] eachTableArray = fileContent.Split("@@@");
+                string[] tableClassArray = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
+
+                for (int tableNum = 0; tableNum < eachTableArray.Length; tableNum++)
+                {
+                    string className = tableClassArray[tableNum];   // A ~ O 까지의 테이블 번호
+                    string tableContent = eachTableArray[tableNum]; // A ~ O 까지의 테이블 내용
+
+                    // 변치와 내부치를 구분 >> 인덱스 0은 변치, 인덱스 1은 내부치
+                    string[] outerInner = tableContent.Split("+구분값+"); // +구분값+ 으로 나누기
+
+                    // 변치를 각각 할당
+                    if (!outerInner[0].Equals("|||||"))     // 비어있다면 구분자의 집합 |||||를 출력함
+                    {
+                        string[] outerValues = outerInner[0].Split('|'); // |로 나누기
+                        int cnt = 0; // 카운트 변수 초기화
+
+
+                        if (!String.IsNullOrEmpty(outerValues[0]))     // 비어있다면 동작 안 함
+                        {
+                            string[] eachElementArray = outerValues[0].Split("<SEP>");
+                            cnt = 1;
+
+                            foreach (string eachElement in eachElementArray)
+                            {
+                                Control ctrl = RNGenerator.Instance.FindControl(RNGenerator.Instance, $"{className}metrixX1_{cnt}");
+                                if (ctrl != null)
+                                {
+                                    TextBox eachTB = ctrl as TextBox;  // 다운캐스팅으로 오류 최소화
+
+                                    if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
+                                    {
+                                        eachTB.Text = eachElement; // 텍스트박스에 값 할당
+                                    }
+                                }
+                                cnt++;
+                            }
+                        }
+
+
+                        if (!String.IsNullOrEmpty(outerValues[1]))     // 비어있다면 동작 안 함
+                        {
+                            string[] eachElementArray = outerValues[1].Split("<SEP>");
+                            cnt = 1;
+
+                            foreach (string eachElement in eachElementArray)
+                            {
+                                Control ctrl = RNGenerator.Instance.FindControl(RNGenerator.Instance, $"{className}keyX{cnt}");
+                                if (ctrl != null)
+                                {
+                                    TextBox eachTB = ctrl as TextBox;  // 다운캐스팅으로 오류 최소화
+
+                                    if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
+                                    {
+                                        eachTB.Text = eachElement; // 텍스트박스에 값 할당
+                                    }
+                                }
+                                cnt++;
+                            }
+                        }
+
+
+                        if (!String.IsNullOrEmpty(outerValues[2]))     // 비어있다면 동작 안 함
+                        {
+                            string[] eachElementArray = outerValues[2].Split("<SEP>");
+                            cnt = 1;
+
+                            foreach (string eachElement in eachElementArray)
+                            {
+                                Control ctrl = RNGenerator.Instance.FindControl(RNGenerator.Instance, $"{className}metrixX2_{cnt}");
+                                if (ctrl != null)
+                                {
+                                    TextBox eachTB = ctrl as TextBox;  // 다운캐스팅으로 오류 최소화
+
+                                    if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
+                                    {
+                                        eachTB.Text = eachElement; // 텍스트박스에 값 할당
+                                    }
+                                }
+                                cnt++;
+                            }
+                        }
+
+
+                        if (!String.IsNullOrEmpty(outerValues[3]))     // 비어있다면 동작 안 함
+                        {
+                            string[] eachElementArray = outerValues[3].Split("<SEP>");
+                            cnt = 1;
+
+                            foreach (string eachElement in eachElementArray)
+                            {
+                                Control ctrl = RNGenerator.Instance.FindControl(RNGenerator.Instance, $"{className}metrixY1_{cnt}");
+                                if (ctrl != null)
+                                {
+                                    TextBox eachTB = ctrl as TextBox;  // 다운캐스팅으로 오류 최소화
+
+                                    if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
+                                    {
+                                        eachTB.Text = eachElement; // 텍스트박스에 값 할당
+                                    }
+                                }
+                                cnt++;
+                            }
+                        }
+
+
+                        if (!String.IsNullOrEmpty(outerValues[4]))     // 비어있다면 동작 안 함
+                        {
+                            string[] eachElementArray = outerValues[4].Split("<SEP>");
+                            cnt = 1;
+
+                            foreach (string eachElement in eachElementArray)
+                            {
+                                Control ctrl = RNGenerator.Instance.FindControl(RNGenerator.Instance, $"{className}keyY{cnt}");
+                                if (ctrl != null)
+                                {
+                                    TextBox eachTB = ctrl as TextBox;  // 다운캐스팅으로 오류 최소화
+
+                                    if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
+                                    {
+                                        eachTB.Text = eachElement; // 텍스트박스에 값 할당
+                                    }
+                                }
+                                cnt++;
+                            }
+                        }
+
+
+                        if (!String.IsNullOrEmpty(outerValues[5]))     // 비어있다면 동작 안 함
+                        {
+                            string[] eachElementArray = outerValues[5].Split("<SEP>");
+                            cnt = 1;
+
+                            foreach (string eachElement in eachElementArray)
+                            {
+                                Control ctrl = RNGenerator.Instance.FindControl(RNGenerator.Instance, $"{className}metrixY2_{cnt}");
+                                if (ctrl != null)
+                                {
+                                    TextBox eachTB = ctrl as TextBox;  // 다운캐스팅으로 오류 최소화
+
+                                    if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
+                                    {
+                                        eachTB.Text = eachElement; // 텍스트박스에 값 할당
+                                    }
+                                }
+                                cnt++;
+                            }
+                        }
+                    }
+
+                    // 내부치를 할당
+                    if (!outerInner[1].Equals("|||||||||"))     // 비어있다면 구분자의 집합 |||||||||를 출력함
+                    {
+                        string[] innerValues = outerInner[1].Split('|'); // |로 나누기
+
+                        for (int x = 0; x < 10; x++)
+                        {
+                            string[] eachElementArray = innerValues[x].Split("<SEP>");
+                            int cnt = 1; // 카운트 변수 초기화
+
+                            foreach (string eachElement in eachElementArray)
+                            {
+                                string ctrlKey = $"{className}var{x + 1}_{cnt}"; // 컨트롤 이름
+                                Control ctrl_in = RNGenerator.Instance.FindControl(RNGenerator.Instance, ctrlKey);
+
+                                if (ctrl_in is System.Windows.Forms.TextBox textBox)
+                                {
+                                    if (!eachElement.Equals("^")) // 비어있는 값은 ^로 표시되기 때문에 아닐 때만 동작
+                                    {
+                                        ctrl_in.Text = eachElement; // 복호화 하여 텍스트박스에 값 할당
+                                    }
+                                }
+
+                                cnt++; // 다음 내부치로 이동
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("파일 불러오기 중 오류 발생 :\n올바른 데이터 형식이 아닙니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        public void LoadMultipleMetrixFiles()
+        {
+            string baseFolder = @"C:\CA연구용역\격판";
+            string[] fileList = new string[]
+            {
+                "3수조격판01.txt",
+                "3수조격판02.txt",
+                "3수조격판03.txt",
+                "3수조격판04.txt",
+                "3수조격판05.txt"
+            };
+
+            foreach (string fileName in fileList)
+            {
+                string fullPath = Path.Combine(baseFolder, fileName);
+
+                if (!File.Exists(fullPath))
+                {
+                    MessageBox.Show($"파일이 존재하지 않습니다: {fileName}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+
+                // 확장자 제외한 파일명만 추출해서 metrixName.Text에 할당
+                metrixName.Text = Path.GetFileNameWithoutExtension(fileName);
+
+                LoadMetrixFromFile(fullPath);
+
+                // UI 안정성 확보를 위한 잠시 대기
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+
+                Scenario.Instance.ScenarioWork(null, null);
+
+                // UI 안정성 확보를 위한 잠시 대기
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+            }
+
+            MessageBox.Show("모든 파일이 처리되었습니다.", "완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         //--------------------------------------------------------------------------------------------------------------------------------------
     }
 }

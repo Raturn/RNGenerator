@@ -12,18 +12,14 @@ namespace RNGenerator
 {
     public partial class SearchBox : Form
     {
-        private RNGenerator _mainForm;
+        private Form _targetForm;
         private int _currentMatchIndex = 0;
         private string _lastKeyword = "";
 
-
-        string[] tableClassArray = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" }; // 테이블 클래스 이름 배열
-
-
-        public SearchBox(RNGenerator mainform)
+        public SearchBox(Form targetForm)
         {
             InitializeComponent();
-            _mainForm = mainform;
+            _targetForm = targetForm;
 
             searchTextBox.KeyDown += SearchTextBox_KeyDown;
         }
@@ -33,16 +29,17 @@ namespace RNGenerator
             DoSearch();
         }
 
-        // Enter 키 처리
         private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // '띡' 소리 제거
+                e.SuppressKeyPress = true;
                 DoSearch();
             }
         }
 
+
+        private List<(TextBox tb, int index)> _matchedPositions = new List<(TextBox, int)>();
 
         private void DoSearch()
         {
@@ -55,28 +52,61 @@ namespace RNGenerator
             {
                 _currentMatchIndex = 0;
                 _lastKeyword = keyword;
+                _matchedPositions.Clear();
+
+                // 텍스트박스 + 인덱스 전체 수집
+                CollectMatchingPositions(_targetForm, keyword, _matchedPositions);
             }
 
-            // 검색 가능한 TextBox 컨트롤 목록 수집
-            List<TextBox> matchedTextBoxes = new List<TextBox>();
-            CollectMatchingTextBoxes(_mainForm, keyword, matchedTextBoxes);
-
-            if (matchedTextBoxes.Count == 0)
+            if (_matchedPositions.Count == 0)
                 return;
 
-            if (_currentMatchIndex >= matchedTextBoxes.Count)
+            if (_currentMatchIndex >= _matchedPositions.Count)
                 _currentMatchIndex = 0;
 
-            // 현재 일치 항목 포커스
-            TextBox target = matchedTextBoxes[_currentMatchIndex];
+            var (target, index) = _matchedPositions[_currentMatchIndex];
             target.Focus();
             target.Select();
-            target.SelectionStart = target.Text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase);
+            target.SelectionStart = index;
             target.SelectionLength = keyword.Length;
+
+            // 내부 스크롤 이동
+            target.ScrollToCaret(); // TextBox 내부 커서 위치까지 스크롤
+            _targetForm.ScrollControlIntoView(target); // Form 자체 스크롤도 이동
 
             _currentMatchIndex++;
         }
 
+
+        private void CollectMatchingPositions(Control parent, string keyword, List<(TextBox, int)> list)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is TextBox tb)
+                {
+                    string name = tb.Name.ToLower();
+
+                    if (!name.Contains("metrix") && !name.Contains("key"))
+                    {
+                        string text = tb.Text;
+                        int start = 0;
+
+                        while (start < text.Length)
+                        {
+                            int idx = text.IndexOf(keyword, start, StringComparison.OrdinalIgnoreCase);
+                            if (idx == -1)
+                                break;
+
+                            list.Add((tb, idx));
+                            start = idx + keyword.Length; // 다음 검색 위치로 이동
+                        }
+                    }
+                }
+
+                if (control.HasChildren)
+                    CollectMatchingPositions(control, keyword, list);
+            }
+        }
 
 
         private void CollectMatchingTextBoxes(Control parent, string keyword, List<TextBox> list)
@@ -93,35 +123,9 @@ namespace RNGenerator
                     }
                 }
 
-                // 자식 컨트롤 재귀 탐색
                 if (control.HasChildren)
-                {
                     CollectMatchingTextBoxes(control, keyword, list);
-                }
             }
         }
-        //private void DoSearch()
-        //{
-        //    string keyword = searchTextBox.Text.Trim();
-
-        //    if (string.IsNullOrEmpty(keyword))
-        //        return;
-
-        //    // 새 키워드 입력 시 인덱스 초기화
-        //    if (_lastKeyword != keyword)
-        //    {
-        //        _currentMatchIndex = 0;
-        //        _lastKeyword = keyword;
-        //    }
-
-        //    _mainForm.SearchAndFocus(keyword, _currentMatchIndex);
-
-        //    _currentMatchIndex++;
-
-        //    if (_currentMatchIndex >= _mainForm.GetMatchCount(keyword))
-        //    {
-        //        _currentMatchIndex = 0; // 순환
-        //    }
-        //}
     }
 }
